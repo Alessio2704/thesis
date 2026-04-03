@@ -1,0 +1,147 @@
+\chapter{Terminal Value} \label{chap:terminal_value}
+
+As established in the preceding chapters, projecting Free Cash Flows to the Firm (\(FCFF_n\)) year-by-year indefinitely is neither practical nor reliable due to increasing uncertainty over longer time horizons. The Discounted Cash Flow model (\ref{eq:dcf_formula}) addresses this by incorporating a Terminal Value (\(TV\)). This \(TV\) represents the estimated value of the company attributable to all cash flows generated beyond the explicit forecast period (\(N\)). It captures the firm's worth from year \(N+1\) into perpetuity (or until a presumed endpoint, depending on the method).
+
+Estimating this crucial component involves making assumptions about the company's long-term future state. Several approaches can be employed to calculate the Terminal Value, each embodying different assumptions about the company's fate beyond year \(N\):
+
+\begin{enumerate}
+    \item \textbf{Liquidation Value Approach}: Assumes the company ceases operations at the end of year \(N\), and its value is based on the estimated proceeds from selling off its assets, net of liabilities.
+    \item \textbf{Stable Growth (Perpetuity) Approach}: Assumes the company continues operating indefinitely beyond year \(N\), but settles into a stable state characterized by a constant, perpetual growth rate (\(g\)) in its free cash flows. This is the most commonly used approach for valuing going concerns.
+\end{enumerate}
+
+The choice of method depends heavily on the characteristics of the company being valued, the industry context, and the analyst's judgment about its long-term prospects and the most reliable way to capture its value beyond the explicit forecast. It is valuable to stress that the Terminal Value often represents a substantial portion, sometimes the majority, of the total estimated firm value. Consequently, establishing a solid, economically grounded framework for its estimation is critical to avoid potentially biased or unrealistic valuations.
+The following sections will explore these approaches in more detail, with a primary focus on the widely used Stable Growth model.
+
+\section{Liquidation Value Approach} \label{sec:liquidation_value}
+The Liquidation Value approach calculates the Terminal Value (\(TV\)) based on the premise that the company will cease its ongoing operations at the end of the explicit forecast period (\(N\)). The value derived represents the estimated net cash proceeds that would be generated from an orderly sale of the company's assets, after settling all outstanding liabilities.
+\[ TV = \text{Proceeds from Asset Sales}_N - \text{Value of Liabilities}_N \]
+
+This method is fundamentally different from going-concern approaches as it does not assume continued operation or perpetual growth. Instead, it focuses on the break-up value of the firm.
+
+\paragraph{Applicability}
+The Liquidation Value approach is most appropriate under specific circumstances where assuming a finite life for the company is more realistic than assuming perpetual operation. Key situations include:
+\begin{itemize}
+    \item \textbf{Finite-Life Assets}: Companies whose primary assets have a limited operational lifespan (e.g., a mine with known reserves expected to be depleted around year \(N\), a project with a fixed contract term).
+    \item \textbf{Distressed Companies}: Firms facing severe financial distress where liquidation is a plausible outcome being considered by stakeholders.
+    \item \textbf{Certain Private Businesses}: Privately held companies where the business's viability is heavily dependent on a specific owner or key figure who is expected to exit (e.g., retire) around year \(N\). If the departure of this individual is anticipated to lead to the cessation or significant diminishment of the core business and its cash flows, valuing the firm based on its potential liquidation value at that point can be more realistic than applying a perpetual growth model.
+\end{itemize}
+
+\paragraph{Estimation Challenges}
+Estimating liquidation value can be complex. It requires assessing the potential market value of various asset categories (receivables, inventory, PP\&E, intangibles) under orderly disposal conditions, which may differ significantly from their book values or value-in-use. Liabilities must also be carefully accounted for. The process often relies on specific asset appraisals and judgment regarding recovery rates.
+
+While less common than the stable growth approach for typical corporate valuations, the liquidation value method provides a relevant alternative framework when the assumption of indefinite operation is questionable.
+
+\section{Stable Growth (Perpetuity) Approach} \label{sec:stable_growth_value}
+The Stable Growth, or Perpetuity, approach is the most frequently used method for calculating the Terminal Value (\(TV\)) in DCF valuations of going concerns. It assumes that after the explicit forecast period (\(N\)), the company enters a "steady state" where its Free Cash Flows to the Firm (\(FCFF\)) grow at a constant, sustainable rate (\(g\)) indefinitely.
+
+The Terminal Value at the end of year \(N\) (\(TV_N\)) is calculated using a version of the Gordon Growth Model:
+\begin{equation} \label{eq:terminal_value_stable_growth}
+    TV = \frac{FCFF_{N+1}}{\text{WACC}_{\text{Terminal}} - g} = \frac{FCFF_N \times (1+g)}{\text{WACC}_{\text{Terminal}} - g}
+\end{equation}
+where:
+\begin{itemize}
+    \item \(FCFF_{N+1}\) is the expected Free Cash Flow to the Firm in the first year after the explicit forecast period (\(N+1\)). This is typically calculated by growing the \(FCFF\) from the final forecast year (\(FCFF_N\)) by the perpetual growth rate (\(g\)).
+    \item \(\text{WACC}_{\text{Terminal}}\) is the company's Weighted Average Cost of Capital assumed for the stable growth period (from year \(N+1\) onwards). This may differ from the WACC used during the explicit forecast period if the company's risk profile or capital structure is expected to change as it matures.
+    \item \(g\) is the constant, perpetual growth rate at which the company's FCFF is expected to grow indefinitely after year \(N\).
+\end{itemize}
+
+\paragraph{Key Assumptions and Requirements}
+For the stable growth model to be valid and yield a meaningful result, several critical assumptions must hold regarding the company's state in perpetuity:
+\begin{enumerate}
+    \item \textbf{Stable Operations}: The company must have reached a steady state. This implies stable operating margins, a consistent reinvestment rate, and a mature business model. Significant strategic shifts, major restructuring, or hyper-growth phases are assumed to be over.
+    \item \textbf{Perpetual Growth Rate (\(g\)) Constraint}: The perpetual growth rate (\(g\)) must be less than the terminal discount rate (\(\text{WACC}_{\text{Terminal}}\)). If \(g \ge \text{WACC}_{\text{Terminal}}\), the formula yields a nonsensical negative or infinite value.
+    \item \textbf{Sustainable Growth Rate}: More fundamentally, the perpetual growth rate (\(g\)) cannot exceed the long-term nominal growth rate of the overall economy in which the company primarily operates. A company cannot grow faster than the economy forever without eventually becoming larger than the economy itself. Therefore, \(g\) is typically capped at or below the expected long-term rate of nominal GDP growth (which, as discussed in Section \ref{sec:risk_free_rate}, is often proxied by the long-term risk-free rate, \(R_F\)). That being said, \(g\) could also be negative to accommodate for companies projected to shrink perpetually in the long term.
+    \item \textbf{Consistent Reinvestment}: The model implicitly assumes that the company will reinvest enough to sustain the perpetual growth rate \(g\). The relationship between growth, reinvestment, and returns is crucial and will be discussed further when detailing the estimation of the inputs (\(g\), \(\text{WACC}_{\text{Terminal}}\), and the underlying \(FCFF_{N+1}\)).
+\end{enumerate}
+
+The accuracy of the Terminal Value derived from this method is highly sensitive to the chosen inputs, particularly the perpetual growth rate (\(g\)) and the terminal WACC (\(\text{WACC}_{\text{Terminal}}\)). The subsequent sections will focus on the careful estimation of these parameters to ensure a consistent and plausible Terminal Value calculation.
+
+\subsection{Ensuring Stable Operations in the Terminal Phase} \label{sec:stable_operations_assumptions}
+The validity of the Stable Growth approach hinges on the assumption that the company has indeed transitioned into a mature, stable state by the beginning of the terminal period (year \(N+1\)). If the company's characteristics projected for year \(N\) still reflect high growth, significant operational changes, or a risk profile substantially different from a mature firm, directly applying the perpetuity formula using year \(N\)'s parameters can lead to inconsistent and unreliable results.
+
+Therefore, before calculating the Terminal Value (\(TV_N\)) using equation (\ref{eq:terminal_value_stable_growth}), it is essential to ensure that the inputs (\(FCFF_{N+1}\), \(\text{WACC}_{\text{Terminal}}\), \(g\)) reflect the characteristics of a company in this stable phase. This often requires adjusting certain parameters from their initial or mid-forecast values to represent the expected steady-state condition by year \(N+1\). Crucially, this adjustment towards steady-state values can be modeled gradually throughout the explicit forecast period (\(N\)). For instance, the beta, D/E ratio, or operating margins might start at current levels in year 1 and progressively move towards their assumed stable-state levels by year \(N\), rather than undergoing an abrupt shift between year \(N\) and \(N+1\). Key characteristics and corresponding adjustments for the terminal state include:
+
+\begin{enumerate}
+    \item \textbf{Stable Operating Metrics}: A company in stable growth should exhibit relatively constant operating margins (EBIT margin) and capital efficiency (Sales-to-Capital ratio or equivalent reinvestment rate). Volatile margins or dramatically changing capital needs are inconsistent with a steady state.
+          \textit{Adjustment Implication}: The operating margin and reinvestment rate used to calculate \(FCFF_{N+1}\) must reflect sustainable, long-term levels. These stable levels might be achieved by year \(N\) through gradual convergence during the forecast period. The terminal reinvestment rate must also be consistent with the chosen perpetual growth rate (\(g\)) and the expected return on capital in the stable phase (\(\text{ROIC}_{\text{Stable}}\), see Section \ref{sec:reinvestment_roic_stable}).
+
+    \item \textbf{Beta (\(\beta\)) Converging Towards 1}: As companies mature and their growth aligns more with the overall economy, their systematic risk, measured by Beta (\(\beta_L\)), tends to converge towards the market average of 1.0. While industry specifics might allow for long-term betas slightly different from 1, significantly high or low betas are generally inconsistent with a perpetual steady state.
+          \textit{Adjustment Implication}: The Cost of Equity (\(C_E\)) used within the \(\text{WACC}_{\text{Terminal}}\) calculation should incorporate a Beta (\(\beta_L\)) reflecting this mature risk profile (often between 0.8 and 1.2, or defaulted to 1.0). This terminal beta might be reached through a gradual adjustment path during the years leading up to \(N\).
+
+    \item \textbf{Sustainable Debt-to-Equity Ratio}: Mature companies typically maintain a capital structure (D/E ratio) aligned with industry norms, balancing tax shields and financial distress costs. Extreme leverage ratios from earlier growth phases are usually not sustainable perpetually.
+          \textit{Adjustment Implication}: The D/E ratio used to calculate the weights (\(W_E, W_D\)) and potentially the cost of debt within \(\text{WACC}_{\text{Terminal}}\) should reflect a long-term target or industry-average leverage level. This target ratio should ideally be achieved by year \(N\) if modeled as a gradual transition.
+
+    \item \textbf{Cost of Capital Reflecting Maturity}: Combining the adjustments for Beta and D/E ratio, along with potentially more stable costs of debt (reflecting a mature company's credit rating), the resulting terminal WACC (\(\text{WACC}_{\text{Terminal}}\)) represents the cost of capital for a mature, average-risk firm. This terminal WACC might differ from the WACC calculated for earlier years and should be the discount rate applied from year \(N+1\) onwards.
+\end{enumerate}
+
+Ensuring these characteristics are reflected in the terminal year inputs, potentially through gradual convergence during the forecast period, is crucial for maintaining consistency. Forcing a company into a stable growth calculation using parameters from a high-growth phase, without modeling the transition to maturity, can significantly distort the Terminal Value estimate. The model should reflect this convergence to stability by the time the terminal period begins.
+
+\subsection{Estimating the Perpetual Growth Rate (\(g\))} \label{sec:estimating_g}
+The perpetual growth rate (\(g\)) is arguably one of the most critical and sensitive inputs in the Stable Growth Terminal Value calculation (\ref{eq:terminal_value_stable_growth}). As established previously, this rate must represent a constant, sustainable growth rate for the company's free cash flows into perpetuity, and it is subject to the fundamental constraint that it cannot exceed the long-term nominal growth rate of the overall economy.
+
+A common and theoretically sound approach is to use the long-term Risk-Free Rate (\(R_F\)), previously estimated in Section \ref{sec:risk_free_rate} for the relevant currency, as a proxy or ceiling for the perpetual growth rate \(g\).\\
+The Risk-Free Rate (\(R_F\)) itself is generally considered to reflect market expectations about the long-run nominal growth potential of the economy. It implicitly embeds two key components:
+\begin{enumerate}
+    \item \textbf{Expected Long-Term Inflation}: The portion of the nominal rate that compensates for the expected erosion of purchasing power over time.
+    \item \textbf{Expected Long-Term Real Growth}: The portion reflecting expectations about the underlying real expansion of the economy (driven by factors like productivity growth, population growth, technological progress).
+\end{enumerate}
+Thus, \(R_F \approx \text{Expected Inflation} + \text{Expected Real Growth}\).
+
+Given that a company cannot sustainably grow faster than the economy in which it operates indefinitely, using the \(R_F\) as the perpetual growth rate \(g\) (or as a strict upper limit for \(g\)) offers significant advantages:
+\begin{itemize}
+    \item \textbf{Economic Consistency}: It directly enforces the crucial constraint (\(g \le\) nominal GDP growth rate), preventing the mathematically and logically impossible scenario where the company eventually outgrows the entire economy.
+    \item \textbf{Internal Model Coherence}: Using the same \(R_F\) that forms the base for the discount rate (\(WACC_{\text{Terminal}}\)) introduces an element of internal consistency within the valuation model.
+    \item \textbf{Practical Availability}: The \(R_F\) has already been estimated as part of the discount rate calculation, making it a readily available input.
+\end{itemize}
+
+Therefore, a standard practice is to set \(g = R_F\). While an analyst might choose a rate slightly below \(R_F\) if they believe the company will perpetually grow slower than the overall economy even in maturity (or even choose a negative \(g\) for a perpetually shrinking industry), setting \(g\) above \(R_F\) is generally considered theoretically unsound for a perpetuity calculation. Using \(R_F\) as the default estimate for \(g\) provides a disciplined and economically grounded approach to this sensitive parameter.
+
+\paragraph{Considering a Negative Perpetual Growth Rate (\(g\))} \label{par:negative_g}
+While the primary constraint on the perpetual growth rate \(g\) is that it cannot exceed the long-term nominal GDP growth rate (often proxied by \(R_F\)), it is important to recognize that \(g\) can plausibly be negative. A negative \(g\) implies that the company's free cash flows are expected to decline at a constant rate indefinitely after the explicit forecast period \(N\).
+
+Setting \(g\) to a negative value is entirely feasible within the Stable Growth model (\ref{eq:terminal_value_stable_growth}) and is the appropriate choice when the company operates in an industry that is expected to face secular decline in the long run. Examples of industries where a negative perpetual growth rate might be considered include:
+
+\begin{enumerate}
+    \item \textbf{Print Media (Newspapers and Magazines)}: Facing ongoing disruption from digital alternatives.
+    \item \textbf{Physical Media (DVD/Blu-ray Manufacturing and Rental)}: Largely superseded by streaming services.
+    \item \textbf{Traditional Cable and Satellite TV Providers}: Experiencing cord-cutting in favor of over-the-top (OTT) streaming platforms.
+    \item \textbf{Tobacco Farming and Manufacturing}: Confronting declining smoking rates in many parts of the world due to health concerns and regulations.
+\end{enumerate}
+
+It is crucial to understand that assuming a negative \(g\) does not imply the company becomes worthless. Even if cash flows decline, they still represent value when discounted back to the present. A negative \(g\) simply reflects the expectation of a perpetual, gradual shrinkage in the company's economic footprint within a declining market. This approach provides a more realistic valuation for firms facing long-term structural headwinds compared to forcing an unrealistic non-negative growth rate. The terminal value will be lower than if \(g\) were positive, but it will still be positive as long as \(FCFF_{N+1}\) is positive and \(\text{WACC}_{\text{Terminal}} > g\) (which is always true if \(g\) is negative).
+
+\subsection{Reinvestment and Return on Invested Capital in Stable Growth} \label{sec:reinvestment_roic_stable}
+The assumption of perpetual growth (\(g\)) in the Stable Growth model necessitates a corresponding assumption about perpetual reinvestment. A company cannot grow its cash flows indefinitely without continually investing capital back into the business. The relationship between growth, reinvestment, and the return generated on that reinvestment is fundamental.
+
+In the stable growth phase, the reinvestment required to achieve the growth rate \(g\) is directly linked to the expected Return on Invested Capital (ROIC) the company earns on its new investments. The proportion of operating income (after tax) that needs to be reinvested (the Reinvestment Rate, RR) is given by:
+\begin{equation} \label{eq:reinvestment_rate_stable}
+    \text{Reinvestment Rate (RR)} = \frac{g}{\text{ROIC}_{\text{Stable}}}
+\end{equation}
+where \(\text{ROIC}_{\text{Stable}}\) is the expected Return on Invested  Capital during the stable growth period. This ROIC reflects the efficiency with which the company converts new investments into additional operating income.
+
+The actual reinvestment amount in the first year of the terminal period (\(N+1\)) is then calculated by applying this rate to the expected after-tax operating income (NOPAT) of that year:
+\begin{equation} \label{eq:reinvestment_amount_stable}
+    \text{Reinvestment}_{N+1} = \text{RR} \times NOPAT_{N+1} = \frac{g}{\text{ROIC}_{\text{Stable}}} \times NOPAT_{N+1}
+\end{equation}
+where \(NOPAT_{N+1} = NOPAT_N \times (1+g) = EBIT_N \times (1-T) \times (1+g)\).
+
+\paragraph{Estimating Return on Invested Capital (ROC) in Stable Growth}
+A critical assumption for the stable phase concerns the company's ability to generate returns on its new investments. Economic theory suggests that in a competitive market, excess returns (where ROIC $>$ Cost of Capital) are difficult to sustain indefinitely. Therefore, a common and often conservative assumption for the stable growth phase is that the company will only earn its cost of capital on new investments:
+\[ \text{ROIC}_{\text{Stable}} = \text{WACC}_{\text{Terminal}} \]
+This implies that in the long run, competition erodes any competitive advantages, and the company earns just enough to satisfy its capital providers.
+
+However, for companies believed to possess durable, long-lasting competitive advantages (e.g., strong network effects, significant barriers to entry, unique patents), analysts might assume a stable ROIC that remains modestly above the terminal WACC. Conversely, for companies in challenging industries, the stable ROC might even be assumed to be below WACC. Setting \(\text{ROIC}_{\text{Stable}}\) equal to \(\text{WACC}_{\text{Terminal}}\) is the most frequent approach, ensuring conservatism and consistency with the notion of a competitive steady state.
+
+\paragraph{Rewriting the Terminal Value Formula}
+By incorporating the relationship between reinvestment, growth, and ROIC, we can express the \(FCFF_{N+1}\) used in the Terminal Value formula (\ref{eq:terminal_value_stable_growth}) more explicitly:
+\begin{align*}
+    FCFF_{N+1} & = NOPAT_{N+1} - \text{Reinvestment}_{N+1}                                                                         \\
+               & = NOPAT_{N+1} - \left( \frac{g}{\text{ROIC}_{\text{Stable}}} \times NOPAT_{N+1} \right)                           \\
+               & = NOPAT_{N+1} \times \left( 1 - \frac{g}{\text{ROIC}_{\text{Stable}}} \right)                                     \\
+               & = \left( EBIT_N \times (1-T) \times (1+g) \right) \times \left( 1 - \frac{g}{\text{ROIC}_{\text{Stable}}} \right)
+\end{align*}
+Substituting this expanded form of \(FCFF_{N+1}\) back into the terminal value equation (\ref{eq:terminal_value_stable_growth}), we get:
+\begin{equation} \label{eq:terminal_value_expanded}
+    TV = \frac{EBIT_N \times (1-T) \times (1+g) \times \left( 1 - \frac{g}{\text{ROIC}_{\text{Stable}}} \right)}{\text{WACC}_{\text{Terminal}} - g}
+\end{equation}
+This formulation explicitly highlights the dependence of the Terminal Value not just on the growth rate \(g\) and the terminal WACC, but also fundamentally on the company's expected long-term return on capital (\(\text{ROIC}_{\text{Stable}}\)) relative to that growth. It ensures that the assumed growth is explicitly funded by appropriate reinvestment, reflecting the underlying economics of value creation.

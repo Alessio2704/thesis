@@ -1,0 +1,33 @@
+\documentclass[12pt]{report}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[super]{nth}
+\usepackage{hyperref}
+
+\title{
+{Company Valuation}\\[10pt]
+{Università Politecnica delle Marche}\\[50pt]
+\includegraphics{/university_logo.png}
+}
+
+\author{Alessio Marcuzzi}
+\date{20-09-2025}
+
+\setlength\parindent{0pt}
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\include{parts/introduction/introduction}
+\part{Building the model}
+\include{parts/part_1/building_the_model}
+\part{Model Response to Macroeconomic Shocks}
+\include{parts/part_2/model_response_to_macroeconomic_shocks}
+
+\end{document}
