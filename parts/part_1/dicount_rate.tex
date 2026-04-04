@@ -46,8 +46,8 @@ Thus:
 \end{itemize}
 
 
-\section{Cost of Equity (\(C_E\))} \label{sec:cost_of_equity}
-The Cost of Equity (\(C_E\)) represents the rate of return required by the company's equity investors to compensate them for the systematic risk of holding the stock. A standard and widely used model for estimating \(C_E\) is the Capital Asset Pricing Model (CAPM):
+\section{Cost of Equity} \label{sec:cost_of_equity}
+The Cost of Equity (\(C_E\)) represents the rate of return required by the company's equity investors to compensate them for the systematic risk of holding the stock. A standard and widely used model for estimating \(C_E\) is the Capital Asset Pricing Model (CAPM), from the work of authors \textcite{sharpe1964beta} and \textcite{lintner1965beta}:
 \begin{equation} \label{eq:cost_of_equity}
     C_E = R_F + \beta_L \times ERP
 \end{equation}
@@ -59,15 +59,15 @@ where:
 \end{itemize}
 Each component (\(R_F\), \(\beta_L\), \(ERP\)) of the CAPM will be detailed in the subsequent sections.
 
-\subsection{Risk Free Rate (\(R_F\))} \label{sec:risk_free_rate}
+\subsection{Risk Free Rate} \label{sec:risk_free_rate}
 The Risk-Free Rate (\(R_F\)) represents the theoretical rate of return on an investment assumed to have zero credit risk. In practice, it is typically proxied by the yield on long-term government bonds issued by a sovereign entity considered highly unlikely to default (e.g., AAA-rated), denominated in the currency of the cash flows being discounted. This rate serves as the baseline return against which the risk premiums for all other investments in that currency are measured.
 
-The selection of the appropriate government bond yield requires careful consideration, especially when dealing with currencies issued by governments that carry non-negligible default risk.
+The selection of the appropriate government bond yield requires careful consideration, especially when dealing with currencies issued by governments that carry non-negligible default risk \parencite{damodaran2025investment}.
 
 \paragraph{Identifying the Proxy for \(R_F\)}
 For valuations in major currencies like USD or EUR, the yields on long-term US Treasury bonds or German Bunds, respectively, are commonly used as the \(R_F\) proxy, as these governments are generally considered to have minimal default risk.
 
-\paragraph{Adjusting for Sovereign Default Risk} \label{sec:adjust_debt_default_risk} % Changed label
+\paragraph{Adjusting for Sovereign Default Risk} \label{sec:adjust_debt_default_risk}
 When the government issuing bonds in the currency of analysis carries default risk (i.e., is not AAA-rated or equivalent), its nominal bond yield (\(Y_{Govt}\)) implicitly includes a Country Default Spread (CDS) on top of the "true" risk-free rate for that currency:
 \[ Y_{Govt} = R_F + \text{Country Default Spread} \]
 To isolate the \(R_F\) for use in the CAPM (where country risk is often captured separately in the ERP or Beta), this spread must be estimated and subtracted:
@@ -80,7 +80,6 @@ Credit Default Swaps (CDS) on sovereign debt provide a direct market assessment 
 However, even highly-rated sovereigns often have non-zero CDS spreads due to market factors. Therefore, the relevant Country Default Spread is typically calculated as the sovereign's CDS spread minus the CDS spread of a benchmark AAA-rated sovereign (like Germany or the US):
 \[ \text{Country Default Spread (bps)} \approx \text{Country CDS Spread} - \text{Benchmark AAA CDS Spread} \]
 The adjusted risk-free rate is then:
-% Division by 10000 converts basis points (1/100th of 1%) to a decimal rate
 \[ R_F = Y_{Govt} - \frac{(\text{Country CDS Spread} - \text{Benchmark AAA CDS Spread})}{100} \]
 
 \begin{table}[H]
@@ -100,7 +99,7 @@ The adjusted risk-free rate is then:
         Illustrative Sovereign CDS Spreads (Basis Points). Data as March 2025. Data can vary significantly.\\
         Source: Investing.com
     }
-    \label{tab:cds_country_prices_example} % Renamed label
+    \label{tab:cds_country_prices_example}
 \end{table}
 
 \subsubsection{Using Sovereign Ratings}
@@ -132,7 +131,7 @@ If reliable CDS data is unavailable, the Country Default Spread can be estimated
         Illustrative Default Spreads by Rating Category. Data as March 2025. Spreads fluctuate with market conditions.\\
         Source: \nolinkurl{https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ratings.html}
     }
-    \label{tab:rating_default_spreads_example} % Renamed label
+    \label{tab:rating_default_spreads_example}
 \end{table}
 
 \subsubsection{Using Differentials on Foreign Currency Bonds}
@@ -148,10 +147,10 @@ In rare cases where a currency lacks a liquid government bond market, estimating
 \[ R_F \approx (1 + R_{F, Base}) \times \frac{(1 + E[\text{Inflation}_{\text{Local}}])}{(1 + E[\text{Inflation}_{\text{Base}}])} - 1 \]
 where \(E[\text{Inflation}]\) denotes the expected long-term inflation rate for the respective currency. This method relies heavily on accurate long-term inflation forecasts.
 
-\subsection{Levered Beta (\(\beta_L\))} \label{sec:beta}
+\subsection{Levered Beta} \label{sec:beta}
 The Levered Beta (\(\beta_L\)) in the CAPM equation (\ref{eq:cost_of_equity}) serves as a measure of a company's systematic risk relative to the overall market. It quantifies how sensitive the company's stock returns are expected to be in response to broader market movements. A \(\beta_L\) greater than 1 suggests higher volatility than the market, while a \(\beta_L\) less than 1 indicates lower volatility.
 
-A common method for estimating beta involves a historical regression analysis, comparing the past stock returns of the company against the returns of a broad market index (e.g., S\&P 500, MSCI World). The slope coefficient of this regression line is taken as the historical beta. While widely used, this "regression beta" approach has limitations: it relies heavily on historical data (which may not reflect future risk), can be sensitive to the chosen time period and index, and often has significant statistical noise (high standard errors).
+A common method for estimating beta involves a historical regression analysis, comparing the past stock returns of the company against the returns of a broad market index (e.g., S\&P 500, MSCI World). The slope coefficient of this regression line is taken as the historical beta. While widely used, this "regression beta" approach has limitations: it relies heavily on historical data (which may not reflect future risk), can be sensitive to the chosen time period and index, and often has significant statistical noise (high standard errors) \parencite{damodaran_risk_parameters}.
 
 Conceptually, a company's beta should reflect the fundamental risks inherent in its business operations and its chosen capital structure. From first principles, we expect beta to be influenced by:
 \begin{enumerate}
@@ -169,7 +168,7 @@ To properly analyze and compare risk across companies and isolate the impact of 
 The distinction allows us to compare the fundamental business risk of companies with different capital structures (using \(\beta_U\)) and then tailor the risk measure to a specific company's leverage level (re-calculating \(\beta_L\)). The following sections will detail the preferred method for estimating beta using this unlevered/levered framework.
 
 \paragraph{Limitations of Regression Beta Estimates} \label{par:regression_beta_limitations}
-While calculating beta via historical price regression is common, relying solely on this method presents several significant drawbacks that can lead to unreliable or misleading estimates of systematic risk:
+While calculating beta via historical price regression is common, relying solely on this method presents several significant drawbacks that can lead to unreliable or misleading estimates of systematic risk \parencite{damodaran_risk_parameters}:
 \begin{enumerate}
     \item \textbf{Sensitivity to Market Index Choice}: The calculated beta value can vary considerably depending on the market index chosen for the regression (e.g., S\&P 500 vs. MSCI World vs. a local market index). This introduces subjectivity and potential inconsistency.
     \item \textbf{Sensitivity to Estimation Period and Return Interval}: Beta estimates are highly sensitive to the length of the historical period used (e.g., 2 years vs. 5 years) and the frequency of returns (daily, weekly, monthly). Different choices can yield substantially different beta values for the same company, without a clear theoretical basis for preferring one specific combination.
@@ -180,7 +179,7 @@ While calculating beta via historical price regression is common, relying solely
 These limitations underscore the need for an alternative approach that is more forward-looking and grounded in the fundamental drivers of systematic risk.
 
 \subsubsection{Bottom-Up Beta Estimation Methodology} \label{sec:bottom_up_beta}
-Given the limitations of direct regression betas (Section \ref{par:regression_beta_limitations}), this thesis adopts a "bottom-up" approach to estimate the company's Levered Beta (\(\beta_L\)). This method builds the beta from the fundamental risks of the company's underlying businesses and its specific financial leverage, offering a more stable and forward-looking estimate. The process involves three key steps:
+Given the limitations of direct regression betas (Section \ref{par:regression_beta_limitations}), this thesis adopts a "bottom-up" approach to estimate the company's Levered Beta (\(\beta_L\)) following the work of \textcite{damodaran_risk_parameters}. This method builds the beta from the fundamental risks of the company's underlying businesses and its specific financial leverage, offering a more stable and forward-looking estimate. The process involves three key steps:
 \begin{enumerate}
     \item \textbf{Estimate Segment Unlevered Betas}: Determine the inherent business risk (\(\beta_U\)) for each distinct operating segment of the company by analyzing comparable publicly traded firms.
     \item \textbf{Calculate Company Unlevered Beta}: Compute the overall unlevered beta for the company as a weighted average of its segment unlevered betas, reflecting the company's business mix.
@@ -228,9 +227,8 @@ This final step incorporates the risk impact of the company's specific capital s
 \end{enumerate}
 This resulting \(\beta_{L, \text{Company}}\) is the estimated levered beta reflecting both the company's business mix and financial leverage, and it is the appropriate beta input for the CAPM equation (\ref{eq:cost_of_equity}). This bottom-up approach generally yields more stable and fundamentally grounded beta estimates compared to direct regression methods.
 
-
 \subsection{Equity Risk Premium (ERP)} \label{sec:erp}
-Building upon the risk-free rate (\(R_F\)) discussed previously (Section \ref{sec:risk_free_rate}), which serves as the baseline return for a zero-risk investment in a given currency, the Equity Risk Premium (ERP) represents the additional expected return an investor requires for holding a diversified portfolio of equities (representing the "market") over investing in that risk-free asset. This premium compensates investors for bearing the systematic, non-diversifiable risks associated with investing in the overall equity market, as opposed to holding a risk-free government bond.
+Building upon the risk-free rate (\(R_F\)) discussed previously (Section \ref{sec:risk_free_rate}), which serves as the baseline return for a zero-risk investment in a given currency, the Equity Risk Premium (ERP) represents the additional expected return an investor requires for holding a diversified portfolio of equities (representing the "market") over investing in that risk-free asset. This premium compensates investors for bearing the systematic, non-diversifiable risks associated with investing in the overall equity market, as opposed to holding a risk-free government bond \parencite{damodaran2008erp}.
 
 The magnitude of the ERP reflects investor compensation requirements for exposure to broad, market-wide risks, distinct from company-specific risks (which are captured by Beta, \(\beta_L\)). Key macroeconomic and market-wide factors influencing the aggregate level of the ERP include:
 \begin{enumerate}
@@ -252,7 +250,7 @@ Analogous to how a default spread compensates bondholders for credit risk (as di
 \end{enumerate}
 
 \paragraph{Choosing an Estimation Method}
-Selecting the appropriate ERP estimation method requires considering the strengths and weaknesses of each approach. While various methods exist, this thesis primarily utilizes the Forward-Looking Implied Equity Risk Premium (Implied ERP). To justify this choice, let's briefly examine the limitations of the alternatives:
+Selecting the appropriate ERP estimation method requires considering the strengths and weaknesses of each approach. While various methods exist, like the ones based on historical premiums, see the work by \textcite{fama_french_2002}, this thesis primarily utilizes the Forward-Looking Implied Equity Risk Premium (Implied ERP) \parencite{damodaran2008erp}. To justify this choice, let's briefly examine the limitations of the alternatives:
 \begin{itemize}
     \item \textbf{Historical Risk Premium}: Its primary drawback is the assumption that the future will mirror the past. Structural economic changes, shifts in global risk aversion, and evolving market dynamics mean that premiums realized over very long historical periods (often dating back a century or more) may not accurately reflect current or future expected premiums. Furthermore, estimates are sensitive to the chosen time period, the specific market index used, and the averaging method (arithmetic vs. geometric).
     \item \textbf{Earnings Yield (E/P Ratio)}: While simple to calculate (inverse of the P/E ratio), the earnings yield is a rough proxy at best. It implicitly assumes earnings are constant perpetuity, ignoring growth, and can be significantly distorted by accounting practices, cyclical earnings fluctuations, and temporary market mispricings (yielding unrealistically high or low implied returns). It does not directly measure the premium over the risk-free rate.
@@ -323,8 +321,8 @@ For such firms, the final product (e.g., crude oil, copper concentrate, iron ore
 In these specific cases, the geographic distribution of the company's production activities (e.g., barrels of oil produced per region, tonnes of ore mined per country) may be a more relevant driver of its overall risk profile than the geographic distribution of its sales revenue. Therefore, for commodity extraction companies, it can be more appropriate to calculate the company-specific ERP by weighting the relevant regional or country ERPs (\(ERP_{\text{Region}}\) or \(ERP_{\text{Country}}\)) by the proportion of production originating from each location, rather than by revenue share. Companies in these sectors often disclose production volumes by geographic site or region in their operational reports, facilitating this alternative weighting scheme. The underlying calculation logic – summing the weighted ERPs – remains the same; only the basis for the weights (\(W_{\text{Region}}\)) changes from revenue to production volume.
 
 
-\section{Cost of Debt (\(C_D\))} \label{sec:cost_of_debt}
-The Cost of Debt (\(C_D\)) required for the WACC formula (\ref{eq:wacc}) represents the current market interest rate the company would face if it were to issue new, long-term debt today. This rate reflects the baseline yield for debt in the relevant currency plus a premium demanded by lenders to compensate for the company's specific default risk. It is not the historical interest expense recorded on the income statement.
+\section{Cost of Debt} \label{sec:cost_of_debt}
+The Cost of Debt (\(C_D\)) required for the WACC formula (\ref{eq:wacc}) represents the current market interest rate the company would face if it were to issue new, long-term debt today. This rate reflects the baseline yield for debt in the relevant currency plus a premium demanded by lenders to compensate for the company's specific default risk. It is not the historical interest expense recorded on the income statement \parencite{damodaran2025investment}.
 
 The pre-tax Cost of Debt can be expressed as:
 \[ C_D = R_F + \text{Company Default Spread} \]
@@ -335,7 +333,7 @@ where:
 \end{itemize}
 
 \paragraph{Estimating the Company Default Spread}
-The ideal way to estimate the default spread is to find the Yield-to-Maturity (YTM) on the company's actively traded, long-term bonds and subtract the risk-free rate (\(R_F\)). However, many companies do not have liquid, long-term bonds outstanding. In such cases, the default spread must be estimated using alternative methods:
+The ideal way to estimate the default spread is to find the Yield-to-Maturity (YTM) on the company's actively traded, long-term bonds and subtract the risk-free rate (\(R_F\)). However, many companies do not have liquid, long-term bonds outstanding. In such cases, the default spread must be estimated using alternative methods as outlined in \parencite{damodaran2025investment}:
 \begin{enumerate}
     \item \textbf{Using Credit Ratings}:
           \begin{itemize}
@@ -392,7 +390,7 @@ Once the Company Default Spread is estimated, the pre-tax Cost of Debt is calcul
 \end{itemize}
 
 \paragraph{Treatment of Convertible Bonds} \label{par:convertible_bonds}
-Convertible bonds present a specific challenge as they combine features of both debt and equity. A convertible bond gives the holder the right, but not the obligation, to convert the bond into a predetermined number of common shares of the issuing company. To correctly incorporate convertible bonds into the WACC calculation, they must be separeted into their debt and equity components:
+Convertible bonds present a specific challenge as they combine features of both debt and equity. A convertible bond gives the holder the right, but not the obligation, to convert the bond into a predetermined number of common shares of the issuing company. To correctly incorporate convertible bonds into the WACC calculation, they must be separated into their debt and equity components \parencite{brealey2020principles}:
 
 \begin{enumerate}
     \item \textbf{Value the Straight Debt Component}: Estimate the value of the bond as if it were a standard, non-convertible ("straight") bond. This involves discounting the bond's promised coupon payments and principal repayment at the company's current pre-tax cost of straight debt (\(C_D\)), estimated based on its credit rating and market conditions (as discussed in Section \ref{sec:cost_of_debt}). Let this value be \(V_{\text{Straight Debt}}\).
@@ -405,8 +403,8 @@ Convertible bonds present a specific challenge as they combine features of both 
 
 By splitting the convertible bond this way, the debt component correctly contributes to the market value of debt and influences the cost of debt calculation, while the equity component (the conversion option) is appropriately treated as part of the firm's equity value, impacting the weight of equity in the WACC. Failing to make this split and simply treating the entire market value of the convertible bond as debt would distort both the cost of debt estimate and the capital structure weights.
 
-\section{Cost of Preferred Stock (\(C_P\))} \label{sec:cost_of_preferred_stock}
-Preferred stock is a hybrid security that shares characteristics of both debt and equity. Holders typically receive a fixed dividend payment periodically, similar to interest on debt, but these payments are usually not tax-deductible for the issuing company. Preferred stockholders generally have priority over common stockholders in receiving dividends and in liquidation, but their claims are subordinate to those of debt holders.
+\section{Cost of Preferred Stock} \label{sec:cost_of_preferred_stock}
+Preferred stock is a hybrid security that shares characteristics of both debt and equity. Holders typically receive a fixed dividend payment periodically, similar to interest on debt, but these payments are usually not tax-deductible for the issuing company. Preferred stockholders generally have priority over common stockholders in receiving dividends and in liquidation, but their claims are subordinate to those of debt holders \parencite{brealey2020principles}.
 
 Because preferred stock typically pays a fixed dividend indefinitely (or for a very long term) and often has no maturity date, its cost (\(C_P\)) is usually estimated as the yield, similar to the valuation of a perpetuity:
 \[ C_P = \frac{D_{PS}}{P_{PS}} \]

@@ -6,3 +6,7 @@
 *.toc
 *.out
 *.fdb_latexmk
+*.bbl
+*.bcf
+*.blg
+*.xml

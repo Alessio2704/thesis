@@ -221,7 +221,7 @@ Recognizing this limitation, the estimation approach adopted in this thesis aims
 The following sections will detail this framework, focusing on methods to derive plausible long-term estimates for reinvestment that align with the company's expected growth trajectory and profitability.
 
 \paragraph{The Sales-to-Capital Ratio Approach} \label{par:sales_to_capital_ratio}
-A robust and widely adopted method for estimating long-term reinvestment needs links these requirements directly to the company's projected revenues and revenue growth. This approach, centered around the Sales-to-Capital Ratio, offers several advantages:
+A robust and widely adopted method for estimating long-term reinvestment needs links these requirements directly to the company's projected revenues and revenue growth. This approach, centered around the Sales-to-Capital Ratio, as outlined by \textcite{damodaran2025investment} offers several advantages:
 
 \begin{enumerate}
     \item \textbf{Leverages Revenue Forecasts}: As discussed in Section \ref{sec:revenue_forecast}, revenue projections, particularly when grounded in market size and share analysis, are often among the more stable and fundamentally defensible components of a long-term forecast. Linking reinvestment to these forecasts provides a consistent foundation.
@@ -249,11 +249,11 @@ This formula directly links the projected change in sales from one year to the n
 The "Total Invested Capital" figure used in the denominator of the Sales-to-Capital ratio (\ref{eq:sales_to_capital_ratio}) aims to capture the total pool of operating capital employed by the firm, funded by both debt and equity providers. While a common starting point is to use balance sheet book values (Shareholders' Equity + Total Debt - Cash and Marketable Securities), achieving a more economically meaningful measure often requires adjustments for certain accounting conventions. Two significant items warrant particular attention:
 
 \begin{enumerate}
-    \item \textbf{Operating Leases}: Historically, operating leases were treated as off-balance-sheet financing. However, recent accounting standards (IFRS 16 and ASC 842) require most leases to be capitalized on the balance sheet, recognizing a "Right-of-Use" asset and a corresponding lease liability. This aligns accounting treatment more closely with the economic reality that long-term leases represent a form of financing similar to debt.
+    \item \textbf{Operating Leases}: Historically, operating leases were treated as off-balance-sheet financing. However, recent accounting standards, specifically IFRS 16 \parencite{ifrs16} and ASC 842 \parencite{asc842}, require most leases to be capitalized on the balance sheet, recognizing a "Right-of-Use" asset and a corresponding lease liability. This aligns accounting treatment more closely with the economic reality that long-term leases represent a form of financing similar to debt.
           \textit{Adjustment Required}: If the company being valued reports under older standards or hasn't fully adopted the new ones, analysts should capitalize the operating leases themselves. This involves estimating the present value of future lease commitments and adding this value to both the firm's assets and its total debt. This adjustment increases the calculated Total Debt and, consequently, the Total Invested Capital, providing a more accurate picture of the capital employed.
 
-    \item \textbf{Research and Development (R\&D) Expenses}: Under standard accounting rules, R\&D expenditures are typically expensed immediately in the income statement as incurred. However, from an economic perspective, R\&D represents an investment intended to generate future benefits, much like Capital Expenditures (CapEx) create tangible assets. For companies where innovation is a primary driver of growth (e.g., technology, pharmaceuticals), expensing R\&D can significantly understate the true capital invested in the business and distort key performance metrics like Return on Equity (ROE) or Return on Invested Capital (ROIC), making comparisons with less R\&D-intensive firms difficult.
-          \textit{Adjustment Required}: To address this, it is often recommended to capitalize R\&D expenses. This involves:
+    \item \textbf{Research and Development (R\&D) Expenses}: Under standard accounting rules, R\&D expenditures are typically expensed immediately in the income statement as incurred. However, from an economic perspective, R\&D represents an investment intended to generate future benefits, much like Capital Expenditures (CapEx) create tangible assets. For companies where innovation is a primary driver of growth (e.g., technology, pharmaceuticals), expensing R\&D can significantly understate the true capital invested in the business and distort key performance metrics like Return on Equity (ROE) or Return on Invested Capital (ROIC) making comparisons with less R\&D-intensive firms difficult.
+          \textit{Adjustment Required}: To address this distortion, it is highly recommended in valuation practice to capitalize R\&D expenses rather than treating them as operating expenses \parencite{damodaran_rd, koller2020valuation}. This involves:
           \begin{itemize}
               \item Estimating an appropriate \textit{amortization period} for the R\&D investments (e.g., 3-10 years, depending on the industry and the expected life of the resulting products/innovations).
               \item Creating an "R\&D Asset" on the balance sheet by summing the unamortized portions of past R\&D expenditures over the chosen period.
@@ -268,7 +268,7 @@ Therefore, a more economically accurate definition of Total Invested Capital bec
 \begin{align*} \label{eq:adjusted_total_capital}
     \text{Adjusted Total Capital} = & \quad \text{Book Value of Equity}                               \\
                                     & + \text{Book Value of Debt}                                     \\
-                                    & + \text{Present Value of Operating Leases (if not capitalized)} \\
+                                    & + \text{PV of Operating Leases (if not capitalized)} \\
                                     & + \text{Capitalized R\&D Asset}                                 \\
                                     & - \text{Cash and Marketable Securities}
 \end{align*}

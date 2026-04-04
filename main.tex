@@ -7,6 +7,9 @@
 \usepackage[super]{nth}
 \usepackage{hyperref}
 
+\usepackage[backend=biber, style=authoryear, maxcitenames=2]{biblatex}
+\addbibresource{references.bib}
+
 \title{
 {Company Valuation}\\[10pt]
 {Università Politecnica delle Marche}\\[50pt]
@@ -29,5 +32,8 @@
 \include{parts/part_1/building_the_model}
 \part{Model Response to Macroeconomic Shocks}
 \include{parts/part_2/model_response_to_macroeconomic_shocks}
+
+\newpage
+\printbibliography[heading=bibintoc, title={References}]
 
 \end{document}
