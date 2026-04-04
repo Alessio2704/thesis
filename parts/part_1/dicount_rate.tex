@@ -84,22 +84,26 @@ The adjusted risk-free rate is then:
 
 \begin{table}[H]
     \centering
+    \caption{Illustrative Sovereign CDS Spreads (Basis Points)}
+    \label{tab:cds_country_prices_example}
+    \vspace{5mm}
     \begin{tabular}{|l|c|}
         \hline
-        Country & Illustrative 10Y CDS Spread (bps) \\ \hline
-        Germany & 24                                \\ \hline
-        USA     & 39                                \\ \hline
-        Japan   & 31                                \\ \hline
-        Italy   & 106                               \\ \hline
-        Russia  & N/A (Market Disrupted)            \\ \hline
-        China   & 71                                \\ \hline
-        India   & 93                                \\ \hline
+        \textbf{Country} & \textbf{10Y CDS Spread (bps)} \\ \hline
+        Germany          & 24                            \\ \hline
+        USA              & 39                            \\ \hline
+        Japan            & 31                            \\ \hline
+        Italy            & 106                           \\ \hline
+        Russia           & N/A (Market Disrupted)        \\ \hline
+        China            & 71                            \\ \hline
+        India            & 93                            \\ \hline
     \end{tabular}
-    \caption{
-        Illustrative Sovereign CDS Spreads (Basis Points). Data as March 2025. Data can vary significantly.\\
-        Source: Investing.com
-    }
-    \label{tab:cds_country_prices_example}
+
+    \vspace{5mm}
+    \raggedright \footnotesize
+    \textit{Note:} Data reflects illustrative 10-year sovereign Credit Default Swap spreads as of March 2025. Spreads are highly dynamic and fluctuate based on macroeconomic conditions and perceived sovereign risk.
+
+    \textit{Source:} Data retrieved from market aggregators.
 \end{table}
 
 \subsubsection{Using Sovereign Ratings}
@@ -108,30 +112,34 @@ If reliable CDS data is unavailable, the Country Default Spread can be estimated
 
 \begin{table}[H]
     \centering
+    \caption{Illustrative Default Spreads by Rating Category}
+    \label{tab:rating_default_spreads_example}
+    \vspace{5mm}
     \begin{tabular}{|l|c|}
         \hline
-        Rating & Illustrative Default Spread \\ \hline
-        AAA    & 0.45\%                      \\ \hline
-        AA     & 0.60\%                      \\ \hline
-        A+     & 0.77\%                      \\ \hline
-        A      & 0.85\%                      \\ \hline
-        A-     & 0.95\%                      \\ \hline
-        BBB    & 1.20\%                      \\ \hline
-        BB+    & 1.55\%                      \\ \hline
-        BB     & 1.83\%                      \\ \hline
-        B+     & 2.61\%                      \\ \hline
-        B      & 3.00\%                      \\ \hline
-        B-     & 4.42\%                      \\ \hline
-        CCC    & 7.28\%                      \\ \hline
-        CC     & 10.10\%                     \\ \hline
-        C      & 15.50\%                     \\ \hline
-        D      & 19.00\%                     \\ \hline
+        \textbf{Rating} & \textbf{Illustrative Default Spread} \\ \hline
+        AAA             & 0.45\%                               \\ \hline
+        AA              & 0.60\%                               \\ \hline
+        A+              & 0.77\%                               \\ \hline
+        A               & 0.85\%                               \\ \hline
+        A-              & 0.95\%                               \\ \hline
+        BBB             & 1.20\%                               \\ \hline
+        BB+             & 1.55\%                               \\ \hline
+        BB              & 1.83\%                               \\ \hline
+        B+              & 2.61\%                               \\ \hline
+        B               & 3.00\%                               \\ \hline
+        B-              & 4.42\%                               \\ \hline
+        CCC             & 7.28\%                               \\ \hline
+        CC              & 10.10\%                              \\ \hline
+        C               & 15.50\%                              \\ \hline
+        D               & 19.00\%                              \\ \hline
     \end{tabular}
-    \caption{
-        Illustrative Default Spreads by Rating Category. Data as March 2025. Spreads fluctuate with market conditions.\\
-        Source: \nolinkurl{https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ratings.html}
-    }
-    \label{tab:rating_default_spreads_example}
+
+    \vspace{5mm}
+    \raggedright \footnotesize
+    \textit{Note:} Spreads fluctuate with market conditions. Data as of March 2025.
+
+    \textit{Source:} \textcite{damodaran_data_2025}.
 \end{table}
 
 \subsubsection{Using Differentials on Foreign Currency Bonds}
@@ -209,7 +217,7 @@ Repeat this process for each distinct business segment the company operates in.
 \paragraph{"Pure-Play Companies"}
 The term "pure-play company" refers to a publicly traded firm that focuses predominantly or exclusively on one specific line of business or industry segment. In the context of bottom-up beta estimation (Step 1, point 2), identifying such companies as peers is highly desirable. Because their operations are concentrated, their observed regression betas (after delevering) are expected to more accurately reflect the inherent systematic risk of that particular business activity, unclouded by the risks associated with diversification into other segments.
 
-Finding true pure-play companies can sometimes be challenging, especially for niche or highly integrated industries. Many large corporations are diversified across multiple segments. Therefore, analysts must exercise judgment when selecting the peer group, often including companies that are primarily engaged in the relevant business, even if not 100\% pure-play. 
+Finding true pure-play companies can sometimes be challenging, especially for niche or highly integrated industries. Many large corporations are diversified across multiple segments. Therefore, analysts must exercise judgment when selecting the peer group, often including companies that are primarily engaged in the relevant business, even if not 100\% pure-play.
 
 Careful screening based on revenue breakdown, business descriptions, and industry classifications is necessary to assemble the most representative peer set for estimating the segment's unlevered beta.
 
@@ -353,7 +361,9 @@ The ideal way to estimate the default spread is to find the Yield-to-Maturity (Y
 
 \begin{table}[H]
     \centering
+    \caption{Illustrative Interest Coverage Ratios and Synthetic Ratings (Large Firms)}
     \label{tab:interest_coverage_ratings}
+    \vspace{2mm}
     \begin{tabular}{|c|c|c|}
         \hline
         \textbf{Interest Coverage Ratio} & \textbf{Possible Rating} & \textbf{Illustrative Spread} \\
@@ -374,9 +384,11 @@ The ideal way to estimate the default spread is to find the Yield-to-Maturity (Y
         \(<\) 0.20                       & D                        & \(>\) 15.00\%                \\
         \hline
     \end{tabular}
-    \caption{Illustrative Interest Coverage Ratios and Synthetic Ratings (Large Firms)\\
-        Spreads are indicative and vary with market conditions and firm size. Ratios may differ for smaller firms.\\
-        Source: \nolinkurl{https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ratings.html}}
+    
+    \vspace{2mm}
+    \raggedright \footnotesize 
+    \textit{Note:} Spreads are indicative and vary with market conditions and firm size. Required ratios may differ for smaller firms.\\
+    \textit{Source:} \textcite{damodaran_data_2025}.
 \end{table}
 
 Once the Company Default Spread is estimated, the pre-tax Cost of Debt is calculated (\(C_D = R_F + \text{Spread}\)). This \(C_D\) is then adjusted for taxes (\(C_D \times (1-T)\)) before being used in the WACC calculation.
