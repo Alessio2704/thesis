@@ -165,6 +165,7 @@ To properly analyze and compare risk across companies and isolate the impact of 
     \item \textbf{Unlevered Beta (\(\beta_U\))}: Also known as the "asset beta," this measures the inherent systematic risk of the company's core business operations, independent of its capital structure. It reflects the risk driven solely by the nature of the business (point 3 above) and its operating leverage (point 2, though sometimes operating leverage effects are also adjusted for separately). It represents the beta the company would have if it were entirely equity-financed (i.e., had no debt).
     \item \textbf{Levered Beta (\(\beta_L\))}: Also known as the "equity beta," this reflects the total systematic risk borne by the company's equity holders. It incorporates both the underlying business risk (\(\beta_U\)) and the additional risk introduced by the company's specific financial leverage (point 1 above). This is the beta used directly in the CAPM equation (\ref{eq:cost_of_equity}) to calculate the cost of equity (\(C_E\)).
 \end{itemize}
+
 The distinction allows us to compare the fundamental business risk of companies with different capital structures (using \(\beta_U\)) and then tailor the risk measure to a specific company's leverage level (re-calculating \(\beta_L\)). The following sections will detail the preferred method for estimating beta using this unlevered/levered framework.
 
 \paragraph{Limitations of Regression Beta Estimates} \label{par:regression_beta_limitations}
@@ -176,10 +177,13 @@ While calculating beta via historical price regression is common, relying solely
     \item \textbf{Impact of Firm-Specific Events}: Extreme company-specific price volatility during the regression period (e.g., due to takeover rumors, major lawsuits, or product failures) can distort the relationship with market movements, potentially leading to statistically unreliable or counterintuitive beta estimates (e.g., a beta close to zero for a clearly risky company, simply because its specific volatility overwhelmed market co-movement during that period).
     \item \textbf{Statistical Noise (Standard Error)}: Regression betas often have large standard errors, meaning the calculated beta coefficient has a wide confidence interval. A high \(R^2\) in the regression indicates that market movements explained a large portion of the stock's past variance, but it does not guarantee that the beta estimate itself is precise or stable.
 \end{enumerate}
+
 These limitations underscore the need for an alternative approach that is more forward-looking and grounded in the fundamental drivers of systematic risk.
 
 \subsubsection{Bottom-Up Beta Estimation Methodology} \label{sec:bottom_up_beta}
-Given the limitations of direct regression betas (Section \ref{par:regression_beta_limitations}), this thesis adopts a "bottom-up" approach to estimate the company's Levered Beta (\(\beta_L\)) following the work of \textcite{damodaran_risk_parameters}. This method builds the beta from the fundamental risks of the company's underlying businesses and its specific financial leverage, offering a more stable and forward-looking estimate. The process involves three key steps:
+Given the limitations of direct regression betas (Section \ref{par:regression_beta_limitations}), this thesis adopts a "bottom-up" approach to estimate the company's Levered Beta (\(\beta_L\)) following the work of \textcite{damodaran_risk_parameters}.
+
+This method builds the beta from the fundamental risks of the company's underlying businesses and its specific financial leverage, offering a more stable and forward-looking estimate. The process involves three key steps:
 \begin{enumerate}
     \item \textbf{Estimate Segment Unlevered Betas}: Determine the inherent business risk (\(\beta_U\)) for each distinct operating segment of the company by analyzing comparable publicly traded firms.
     \item \textbf{Calculate Company Unlevered Beta}: Compute the overall unlevered beta for the company as a weighted average of its segment unlevered betas, reflecting the company's business mix.
@@ -205,7 +209,9 @@ Repeat this process for each distinct business segment the company operates in.
 \paragraph{"Pure-Play Companies"}
 The term "pure-play company" refers to a publicly traded firm that focuses predominantly or exclusively on one specific line of business or industry segment. In the context of bottom-up beta estimation (Step 1, point 2), identifying such companies as peers is highly desirable. Because their operations are concentrated, their observed regression betas (after delevering) are expected to more accurately reflect the inherent systematic risk of that particular business activity, unclouded by the risks associated with diversification into other segments.
 
-Finding true pure-play companies can sometimes be challenging, especially for niche or highly integrated industries. Many large corporations are diversified across multiple segments. Therefore, analysts must exercise judgment when selecting the peer group, often including companies that are primarily engaged in the relevant business, even if not 100\% pure-play. Careful screening based on revenue breakdown, business descriptions, and industry classifications is necessary to assemble the most representative peer set for estimating the segment's unlevered beta.
+Finding true pure-play companies can sometimes be challenging, especially for niche or highly integrated industries. Many large corporations are diversified across multiple segments. Therefore, analysts must exercise judgment when selecting the peer group, often including companies that are primarily engaged in the relevant business, even if not 100\% pure-play. 
+
+Careful screening based on revenue breakdown, business descriptions, and industry classifications is necessary to assemble the most representative peer set for estimating the segment's unlevered beta.
 
 \paragraph{Step 2: Calculate Company Unlevered Beta (\(\beta_{U, \text{Company}}\))}
 This step aggregates the segment risks based on their contribution to the overall company.
@@ -225,6 +231,7 @@ This final step incorporates the risk impact of the company's specific capital s
     \item \textit{Relever the Company Beta}: Apply the company's specific leverage and tax rate to its overall unlevered beta (\(\beta_{U, \text{Company}}\)) to calculate the company's levered beta (\(\beta_{L, \text{Company}}\)):
           \[ \beta_{L, \text{Company}} = \beta_{U, \text{Company}} \times (1 + (1 - T_{\text{Company}}) \times (D/E_{\text{Company}})) \]
 \end{enumerate}
+
 This resulting \(\beta_{L, \text{Company}}\) is the estimated levered beta reflecting both the company's business mix and financial leverage, and it is the appropriate beta input for the CAPM equation (\ref{eq:cost_of_equity}). This bottom-up approach generally yields more stable and fundamentally grounded beta estimates compared to direct regression methods.
 
 \subsection{Equity Risk Premium (ERP)} \label{sec:erp}
@@ -312,6 +319,7 @@ where \(W_{\text{Region}}\) is the proportion of the company's total revenues de
 
 \paragraph{Special Case: Production vs. Revenue Location Risk} \label{par:production_location}
 The framework described above, weighting regional ERPs by revenue contribution, is appropriate for the vast majority of companies whose primary risks are tied to the markets where they sell their goods and services. However, a notable exception arises for certain types of companies, particularly those involved in the extraction and primary production of commodities (e.g., mining, oil and gas exploration and production).
+
 For such firms, the final product (e.g., crude oil, copper concentrate, iron ore) is often highly standardized and sold globally based on international benchmark prices, often through regulated exchanges or large-scale contracts. Consequently, the specific location where the revenue is booked might be less indicative of the core operating risks than the location where the production or extraction occurs. These companies face significant risks tied directly to their operational footprint, including:
 \begin{itemize}
     \item Geological and operational risks specific to extraction sites.
@@ -413,6 +421,7 @@ where:
     \item \(D_{PS}\) is the stated annual dividend per preferred share. This information can usually be found in the company's financial reports or prospectus for the specific preferred stock issue.
     \item \(P_{PS}\) is the current market price per preferred share.
 \end{itemize}
+
 The cost of preferred stock (\(C_P\)) represents the rate of return required by preferred stock investors. Unlike the cost of debt, the cost of preferred stock is generally not adjusted for taxes in the WACC formula (\ref{eq:wacc}). This is because preferred dividends are typically paid out of the company's after-tax income, meaning they do not provide the same tax shield benefit as interest payments on debt.
 
 If a company has multiple classes or series of preferred stock outstanding with different dividend rates and market prices, the overall Cost of Preferred Stock (\(C_P\)) used in the WACC should be a weighted average of the costs of the individual series, weighted by their respective market values. However, for many companies, preferred stock is either not used or represents a very small portion of the capital structure, simplifying the calculation. If a company has no preferred stock outstanding, then \(C_P\) and \(W_P\) are both zero in the WACC formula.

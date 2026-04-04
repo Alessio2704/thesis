@@ -10,6 +10,7 @@ Estimating this crucial component involves making assumptions about the company'
 \end{enumerate}
 
 The choice of method depends heavily on the characteristics of the company being valued, the industry context, and the analyst's judgment about its long-term prospects and the most reliable way to capture its value beyond the explicit forecast. It is valuable to stress that the Terminal Value often represents a substantial portion, sometimes the majority, of the total estimated firm value. Consequently, establishing a solid, economically grounded framework for its estimation is critical to avoid potentially biased or unrealistic valuations.
+
 The following sections will explore these approaches in more detail, with a primary focus on the widely used Stable Growth model.
 
 \section{Liquidation Value Approach} \label{sec:liquidation_value}
@@ -59,7 +60,9 @@ The accuracy of the Terminal Value derived from this method is highly sensitive 
 \subsection{Ensuring Stable Operations in the Terminal Phase} \label{sec:stable_operations_assumptions}
 The validity of the Stable Growth approach hinges on the assumption that the company has indeed transitioned into a mature, stable state by the beginning of the terminal period (year \(N+1\)). If the company's characteristics projected for year \(N\) still reflect high growth, significant operational changes, or a risk profile substantially different from a mature firm, directly applying the perpetuity formula using year \(N\)'s parameters can lead to inconsistent and unreliable results.
 
-Therefore, before calculating the Terminal Value (\(TV_N\)) using equation (\ref{eq:terminal_value_stable_growth}), it is essential to ensure that the inputs (\(FCFF_{N+1}\), \(\text{WACC}_{\text{Terminal}}\), \(g\)) reflect the characteristics of a company in this stable phase. This often requires adjusting certain parameters from their initial or mid-forecast values to represent the expected steady-state condition by year \(N+1\). Crucially, this adjustment towards steady-state values can be modeled gradually throughout the explicit forecast period (\(N\)). For instance, the beta, D/E ratio, or operating margins might start at current levels in year 1 and progressively move towards their assumed stable-state levels by year \(N\), rather than undergoing an abrupt shift between year \(N\) and \(N+1\). Key characteristics and corresponding adjustments for the terminal state include:
+Therefore, before calculating the Terminal Value (\(TV_N\)) using equation (\ref{eq:terminal_value_stable_growth}), it is essential to ensure that the inputs (\(FCFF_{N+1}\), \(\text{WACC}_{\text{Terminal}}\), \(g\)) reflect the characteristics of a company in this stable phase. This often requires adjusting certain parameters from their initial or mid-forecast values to represent the expected steady-state condition by year \(N+1\). Crucially, this adjustment towards steady-state values can be modeled gradually throughout the explicit forecast period (\(N\)). 
+
+For instance, the beta, D/E ratio, or operating margins might start at current levels in year 1 and progressively move towards their assumed stable-state levels by year \(N\), rather than undergoing an abrupt shift between year \(N\) and \(N+1\). Key characteristics and corresponding adjustments for the terminal state include:
 
 \begin{enumerate}
     \item \textbf{Stable Operating Metrics}: A company in stable growth should exhibit relatively constant operating margins (EBIT margin) and capital efficiency (Sales-to-Capital ratio or equivalent reinvestment rate). Volatile margins or dramatically changing capital needs are inconsistent with a steady state.
@@ -108,7 +111,9 @@ Setting \(g\) to a negative value is entirely feasible within the Stable Growth 
     \item \textbf{Tobacco Farming and Manufacturing}: Confronting declining smoking rates in many parts of the world due to health concerns and regulations.
 \end{enumerate}
 
-It is crucial to understand that assuming a negative \(g\) does not imply the company becomes worthless. Even if cash flows decline, they still represent value when discounted back to the present. A negative \(g\) simply reflects the expectation of a perpetual, gradual shrinkage in the company's economic footprint within a declining market. This approach provides a more realistic valuation for firms facing long-term structural headwinds compared to forcing an unrealistic non-negative growth rate. The terminal value will be lower than if \(g\) were positive, but it will still be positive as long as \(FCFF_{N+1}\) is positive and \(\text{WACC}_{\text{Terminal}} > g\) (which is always true if \(g\) is negative).
+It is crucial to understand that assuming a negative \(g\) does not imply the company becomes worthless. Even if cash flows decline, they still represent value when discounted back to the present. A negative \(g\) simply reflects the expectation of a perpetual, gradual shrinkage in the company's economic footprint within a declining market. 
+
+This approach provides a more realistic valuation for firms facing long-term structural headwinds compared to forcing an unrealistic non-negative growth rate. The terminal value will be lower than if \(g\) were positive, but it will still be positive as long as \(FCFF_{N+1}\) is positive and \(\text{WACC}_{\text{Terminal}} > g\) (which is always true if \(g\) is negative).
 
 \subsection{Reinvestment and Return on Invested Capital in Stable Growth} \label{sec:reinvestment_roic_stable}
 The assumption of perpetual growth (\(g\)) in the Stable Growth model necessitates a corresponding assumption about perpetual reinvestment. A company cannot grow its cash flows indefinitely without continually investing capital back into the business. The relationship between growth, reinvestment, and the return generated on that reinvestment is fundamental.
@@ -130,7 +135,9 @@ A critical assumption for the stable phase concerns the company's ability to gen
 \[ \text{ROIC}_{\text{Stable}} = \text{WACC}_{\text{Terminal}} \]
 This implies that in the long run, competition erodes any competitive advantages, and the company earns just enough to satisfy its capital providers.
 
-However, for companies believed to possess durable, long-lasting competitive advantages (e.g., strong network effects, significant barriers to entry, unique patents), analysts might assume a stable ROIC that remains modestly above the terminal WACC. Conversely, for companies in challenging industries, the stable ROC might even be assumed to be below WACC. Setting \(\text{ROIC}_{\text{Stable}}\) equal to \(\text{WACC}_{\text{Terminal}}\) is the most frequent approach, ensuring conservatism and consistency with the notion of a competitive steady state.
+However, for companies believed to possess durable, long-lasting competitive advantages (e.g., strong network effects, significant barriers to entry, unique patents), analysts might assume a stable ROIC that remains modestly above the terminal WACC. 
+
+Conversely, for companies in challenging industries, the stable ROC might even be assumed to be below WACC. Setting \(\text{ROIC}_{\text{Stable}}\) equal to \(\text{WACC}_{\text{Terminal}}\) is the most frequent approach, ensuring conservatism and consistency with the notion of a competitive steady state.
 
 \paragraph{Rewriting the Terminal Value Formula}
 By incorporating the relationship between reinvestment, growth, and ROIC, we can express the \(FCFF_{N+1}\) used in the Terminal Value formula (\ref{eq:terminal_value_stable_growth}) more explicitly:
@@ -144,4 +151,5 @@ Substituting this expanded form of \(FCFF_{N+1}\) back into the terminal value e
 \begin{equation} \label{eq:terminal_value_expanded}
     TV = \frac{EBIT_N \times (1-T) \times (1+g) \times \left( 1 - \frac{g}{\text{ROIC}_{\text{Stable}}} \right)}{\text{WACC}_{\text{Terminal}} - g}
 \end{equation}
+
 This formulation explicitly highlights the dependence of the Terminal Value not just on the growth rate \(g\) and the terminal WACC, but also fundamentally on the company's expected long-term return on capital (\(\text{ROIC}_{\text{Stable}}\)) relative to that growth. It ensures that the assumed growth is explicitly funded by appropriate reinvestment, reflecting the underlying economics of value creation \parencite{damodaran2025investment}.
