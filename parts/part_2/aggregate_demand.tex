@@ -5,7 +5,7 @@ Having established how central banks influence interest rates and how these rate
 Following standard macroeconomic theory \parencite{blanchard2021macroeconomics, mankiw2022macroeconomics}, Aggregate Demand (AD) represents the total demand for goods and services in an economy at a given overall price level and a given time period. It is represented by the aggregate demand curve, which describes the relationship between price levels and the quantity of output that firms are willing to provide. This is traditionally expressed by the following national income accounting identity:
 
 \begin{equation} \label{eq:ad}
-AD = C + I + G + NX
+    AD = C + I + G + NX
 \end{equation}
 where:
 \begin{itemize}
@@ -22,7 +22,7 @@ Understanding the drivers of these components is crucial because they fundamenta
 Gross Domestic Product (GDP) represents the total monetary or market value of all the finished goods and services produced within a country's borders in a specific time period. In macroeconomic equilibrium, the total output produced (GDP or \(Y\)) must equal the total demand for that output (AD). Thus:
 
 \begin{equation} \label{eq:gdp_equals_ad}
-Y = GDP = AD = C + I + G + NX
+    Y = GDP = AD = C + I + G + NX
 \end{equation}
 
 Changes in interest rates exert a significant influence on overall GDP primarily by affecting the Consumption (\(C\)) and Investment (\(I\)) components of Aggregate Demand.
@@ -94,7 +94,7 @@ Macroeconomic conditions also influence operating margins (Section \ref{sec:ebit
 The abrupt and severe impact of the COVID-19 pandemic on the global economy provides a compelling case study for applying the valuation framework under conditions of extreme macroeconomic shock and uncertainty. The Cruise Line industry serves as a particularly salient example, given its operational characteristics and the direct nature of the shock it experienced.
 
 \paragraph{Pre-Pandemic Context}
-Leading up to 2020, the cruise industry was experiencing a period of robust growth and popularity. 2019 marked a record year, with global passenger numbers exceeding 30 million. Several factors contributed to this strong performance:
+Leading up to 2020, the cruise industry was experiencing a period of robust growth and popularity. 2019 marked a record year, with global passenger numbers exceeding 30 million, capping a decade of sustained industry expansion \parencite{clia2021state}. Several factors contributed to this strong performance:
 \begin{itemize}
     \item \textbf{Market Expansion and Diversification}: The industry was successfully broadening its appeal beyond traditional demographics, making significant inroads with younger generations, including Millennials and Gen Z, through targeted marketing and onboard experiences.
     \item \textbf{Fleet Modernization and Innovation}: Substantial capital investment by major players (Carnival Corporation, Royal Caribbean Group, Norwegian Cruise Line Holdings) resulted in new, larger, technologically advanced ships offering a wider array of amenities and activities. This enhanced the perceived value proposition compared to land-based vacation alternatives.
@@ -103,37 +103,37 @@ Leading up to 2020, the cruise industry was experiencing a period of robust grow
 This positive trajectory suggested a strong underlying consumer demand for the product.
 
 \paragraph{The COVID-19 Shock and Market Reaction}
-The onset of the pandemic led to an unprecedented, near-instantaneous global shutdown of cruise operations due to health regulations ("No Sail Orders") and widespread travel restrictions. Revenues effectively collapsed to zero virtually overnight. Compounding the issue, the industry has inherently high fixed operating costs – maintaining massive vessels (even when idle), port fees, minimum staffing levels, insurance, etc. – leading to significant cash burn rates during the shutdown.
+The onset of the pandemic led to an unprecedented, near-instantaneous global shutdown of cruise operations. This was legally catalyzed in the United States by strict health regulations, most notably the sweeping "No Sail Order" issued by the \textcite{cdc2020nosail}, alongside widespread global travel restrictions. Revenues effectively collapsed to zero virtually overnight. Compounding the issue, the industry has inherently high fixed operating costs – maintaining massive vessels (even when idle), port fees, minimum staffing levels, insurance, etc. – leading to significant cash burn rates during the shutdown.
 
 The market reaction was swift and brutal. Stock prices of major cruise lines plummeted, declining by 80\% or more from their pre-pandemic highs within weeks. This reflected not only the immediate operational halt but also profound uncertainty about the industry's future viability and solvency. Analyzing this dramatic valuation reset using a DCF framework requires dissecting the market's implicit assumptions into two distinct, though related, components:
 
 \begin{enumerate}
     \item \textbf{Financial Distress and Balance Sheet Impairment}: This component addresses the quantifiable damage to the companies' financial health.
-        \begin{itemize}
-            \item \textit{Cash Burn and Liquidity Crisis}: Faced with zero revenue and high fixed costs, cruise lines burned through cash reserves rapidly, necessitating urgent capital raising to avoid bankruptcy.
-            \item \textit{Capital Structure Changes}: Companies resorted to raising substantial amounts of capital under duress. This involved:
-                \begin{itemize}
-                    \item Issuing large amounts of new debt, often secured by ships or other assets, and frequently at high interest rates reflecting their distressed situation (\(\rightarrow\) significantly increased Market Value of Debt, \(MV_{Debt}\), and higher future interest expense).
-                    \item Utilizing convertible debt structures.
-                    \item Issuing significant amounts of new equity at depressed prices, leading to substantial dilution for existing shareholders (\(\rightarrow\) increased share count).
-                \end{itemize}
-            \item \textit{Impact on DCF Inputs}: These actions directly and negatively impacted intrinsic equity value through several channels:
-                \begin{itemize}
-                    \item Increased financial leverage (\(D/E\)) likely increased the levered beta (\(\beta_L\)).
-                    \item The higher risk profile and market conditions led to a much higher cost of debt (\(C_D\)).
-                    \item Both factors contributed to a significantly higher Weighted Average Cost of Capital (WACC).
-                    \item Higher future interest payments reduced the Free Cash Flow available to equity (FCFE) or required higher operating performance to generate the same FCFF.
-                    \item Increased share count directly reduced the calculated intrinsic value per share.
-                    \item Heightened bankruptcy risk needed to be considered, potentially warranting even higher discount rates or probability-weighting scenarios.
-                \end{itemize}
-            This financial damage represented a tangible, largely quantifiable reduction in the intrinsic value per share for pre-existing equity holders.
-        \end{itemize}
+          \begin{itemize}
+              \item \textit{Cash Burn and Liquidity Crisis}: Faced with zero revenue and high fixed costs, cruise lines burned through cash reserves rapidly, necessitating urgent capital raising to avoid bankruptcy.
+              \item \textit{Capital Structure Changes}: To ensure immediate survival, the major operators resorted to raising unprecedented amounts of capital under severe duress. As extensively documented in their respective annual SEC filings \parencite{carnival202110k, rcl202110k, nclh202110k}, this restructuring permanently altered their DCF profiles and involved:
+                    \begin{itemize}
+                        \item Issuing large amounts of new debt, often secured by ships or other assets, and frequently at high interest rates reflecting their distressed situation (\(\rightarrow\) significantly increased Market Value of Debt, \(MV_{Debt}\), and higher future interest expense).
+                        \item Utilizing convertible debt structures.
+                        \item Issuing significant amounts of new equity at depressed prices, leading to substantial dilution for existing shareholders (\(\rightarrow\) increased share count).
+                    \end{itemize}
+              \item \textit{Impact on DCF Inputs}: These actions directly and negatively impacted intrinsic equity value through several channels:
+                    \begin{itemize}
+                        \item Increased financial leverage (\(D/E\)) likely increased the levered beta (\(\beta_L\)).
+                        \item The higher risk profile and market conditions led to a much higher cost of debt (\(C_D\)).
+                        \item Both factors contributed to a significantly higher Weighted Average Cost of Capital (WACC).
+                        \item Higher future interest payments reduced the Free Cash Flow available to equity (FCFE) or required higher operating performance to generate the same FCFF.
+                        \item Increased share count directly reduced the calculated intrinsic value per share.
+                        \item Heightened bankruptcy risk needed to be considered, potentially warranting even higher discount rates or probability-weighting scenarios.
+                    \end{itemize}
+                    This financial damage represented a tangible, largely quantifiable reduction in the intrinsic value per share for pre-existing equity holders.
+          \end{itemize}
     \item \textbf{Assumptions about Long-Term Demand (TAM and Consumer Behavior)}: Beyond the financial restructuring, the sheer magnitude of the share price declines suggested that the market was embedding deeply pessimistic assumptions about the long-term future of cruise travel itself. These assumptions likely centered on:
-        \begin{itemize}
-            \item \textit{Persistent Health Fears}: The belief that a significant portion of the potential customer base would develop a permanent aversion to the perceived health risks associated with congregate settings like cruise ships, permanently shrinking the TAM.
-            \item \textit{Shifted Consumer Preferences/Priorities}: The hypothesis that the pandemic experience would fundamentally alter societal values or travel preferences, permanently reducing the appeal of cruising relative to other vacation types.
-        \end{itemize}
-        Assessing this component requires more subjective judgment and qualitative analysis compared to the balance sheet impact.
+          \begin{itemize}
+              \item \textit{Persistent Health Fears}: The belief that a significant portion of the potential customer base would develop a permanent aversion to the perceived health risks associated with congregate settings like cruise ships, permanently shrinking the TAM.
+              \item \textit{Shifted Consumer Preferences/Priorities}: The hypothesis that the pandemic experience would fundamentally alter societal values or travel preferences, permanently reducing the appeal of cruising relative to other vacation types.
+          \end{itemize}
+          Assessing this component requires more subjective judgment and qualitative analysis compared to the balance sheet impact.
 \end{enumerate}
 
 \paragraph{The Analyst's Task: Evaluating Plausibility}
@@ -148,10 +148,10 @@ A rigorous DCF analysis necessitates modeling the near-term reality (revenue col
 \begin{itemize}
     \item \textbf{Near-Term Forecasts (\(n=1\) to maybe \(n=3-5\))}: Model minimal or zero revenue initially, followed by a gradual ramp-up reflecting the expected timeline for operational restarts, fleet reactivation, rebuilding occupancy levels, and navigating lingering health protocols or consumer hesitancy. Cash flows during this period would likely be negative or minimal.
     \item \textbf{Long-Term Forecasts (\(n=5\) to \(N\)) and Terminal Value}: This is where the core judgment on demand resilience lies.
-        \begin{itemize}
-            \item A pessimistic scenario might assume TAM growth significantly below pre-pandemic trends or even long-term stagnation/decline, and potentially lower sustained operating margins due to higher costs or reduced pricing power.
-            \item A more optimistic (or perhaps baseline resilience) scenario might model a return towards pre-pandemic passenger growth trends and TAM expansion after the initial recovery period, assuming consumer preferences prove durable. Margins might also be modeled to recover towards historical levels, possibly after accounting for any permanent cost increases.
-        \end{itemize}
+          \begin{itemize}
+              \item A pessimistic scenario might assume TAM growth significantly below pre-pandemic trends or even long-term stagnation/decline, and potentially lower sustained operating margins due to higher costs or reduced pricing power.
+              \item A more optimistic (or perhaps baseline resilience) scenario might model a return towards pre-pandemic passenger growth trends and TAM expansion after the initial recovery period, assuming consumer preferences prove durable. Margins might also be modeled to recover towards historical levels, possibly after accounting for any permanent cost increases.
+          \end{itemize}
     \item \textbf{WACC and Capital Structure}: Throughout the forecast, the WACC must reflect the new, higher-risk capital structure resulting from the crisis financing, only potentially normalizing towards industry averages very late in the forecast period or in the terminal value if significant deleveraging is plausibly projected.
     \item \textbf{Scenario Analysis}: Given the high uncertainty, explicitly modeling different recovery scenarios (e.g., fast 'V-shape', slower 'U-shape', 'L-shape' stagnation) and assigning probabilities can help capture the range of potential outcomes.
 \end{itemize}
@@ -186,30 +186,30 @@ Once a model is trained, the focus shifts to deploying it efficiently to handle 
 
 \begin{enumerate}
     \item \textbf{Computing Chips (Designed Specifically for Inference)}: While the powerful GPUs used for training can also perform inference, they are often overkill and not power- or cost-efficient for running inference tasks at massive scale. This creates demand for specialized chips optimized for inference workloads. These chips prioritize metrics like queries per second per watt and lower latency, rather than the raw throughput needed for training. Investment flows into developing and deploying:
-        \begin{itemize}
-            \item Specialized AI accelerators (ASICs or FPGAs) tailored for common inference operations.
-            \item Lower-power versions of GPUs.
-            \item CPUs with enhanced AI instruction sets.
-            \item Chips designed for "edge" devices (smartphones, cars, sensors) enabling local inference with reduced reliance on datacenters.
-        \end{itemize}
-        This drives a parallel investment cycle in semiconductor design and manufacturing focused specifically on the economics of large-scale deployment.
+          \begin{itemize}
+              \item Specialized AI accelerators (ASICs or FPGAs) tailored for common inference operations.
+              \item Lower-power versions of GPUs.
+              \item CPUs with enhanced AI instruction sets.
+              \item Chips designed for "edge" devices (smartphones, cars, sensors) enabling local inference with reduced reliance on datacenters.
+          \end{itemize}
+          This drives a parallel investment cycle in semiconductor design and manufacturing focused specifically on the economics of large-scale deployment.
 
     \item \textbf{Infrastructure Optimization}: Delivering fast, reliable AI responses to potentially millions of users globally requires significant investment in optimizing the supporting infrastructure. This includes:
-        \begin{itemize}
-            \item Building out geographically distributed datacenter capacity, often closer to end-users (edge computing principles) to minimize latency.
-            \item Developing sophisticated software layers for load balancing, model serving, and efficient resource allocation across inference servers.
-            \item Investing in high-throughput, low-latency networking within and between datacenters hosting inference workloads.
-            \item Optimizing power delivery and cooling specifically for the different heat/power profiles of inference servers compared to training clusters.
-        \end{itemize}
-        Cloud providers and large tech companies make substantial ongoing investments here to improve the performance and reduce the cost of serving AI models.
+          \begin{itemize}
+              \item Building out geographically distributed datacenter capacity, often closer to end-users (edge computing principles) to minimize latency.
+              \item Developing sophisticated software layers for load balancing, model serving, and efficient resource allocation across inference servers.
+              \item Investing in high-throughput, low-latency networking within and between datacenters hosting inference workloads.
+              \item Optimizing power delivery and cooling specifically for the different heat/power profiles of inference servers compared to training clusters.
+          \end{itemize}
+          Cloud providers and large tech companies make substantial ongoing investments here to improve the performance and reduce the cost of serving AI models.
 
     \item \textbf{Model Optimization and Breakthroughs}: The sheer size of state-of-the-art models makes inference computationally expensive. This incentivizes significant research and development (a form of investment, as discussed in Section \ref{par:defining_total_capital}, talking about R\&D Capitalization) into techniques to make models smaller, faster, and cheaper to run without sacrificing too much accuracy. Key areas include:
-        \begin{itemize}
-            \item \textit{Model Compression}: Techniques like quantization (using lower-precision numbers), pruning (removing redundant parameters), and knowledge distillation (training smaller models to mimic larger ones).
-            \item \textit{Efficient Architectures}: Designing new types of neural networks that achieve similar results with fewer computations (e.g., Mixture-of-Experts models).
-            \item \textit{Algorithmic Improvements}: Developing better algorithms for caching results, parallelizing inference tasks, or optimizing specific operations.
-        \end{itemize}
-        Investment in AI research labs, software tooling, and specialized frameworks aims to reduce the ongoing operational costs associated with the inference phase, making widespread AI deployment more economically viable.
+          \begin{itemize}
+              \item \textit{Model Compression}: Techniques like quantization (using lower-precision numbers), pruning (removing redundant parameters), and knowledge distillation (training smaller models to mimic larger ones).
+              \item \textit{Efficient Architectures}: Designing new types of neural networks that achieve similar results with fewer computations (e.g., Mixture-of-Experts models).
+              \item \textit{Algorithmic Improvements}: Developing better algorithms for caching results, parallelizing inference tasks, or optimizing specific operations.
+          \end{itemize}
+          Investment in AI research labs, software tooling, and specialized frameworks aims to reduce the ongoing operational costs associated with the inference phase, making widespread AI deployment more economically viable.
 \end{enumerate}
 The inference phase, therefore, drives continuous investment in specialized hardware, optimized infrastructure, and ongoing R\&D to deliver AI capabilities efficiently and economically at scale.
 
@@ -243,12 +243,12 @@ The intense investment and rapid innovation characterizing the AI sector inevita
     \item \textbf{LLM Developers (e.g., OpenAI, Anthropic, Google, Meta)}: Companies developing foundational models face immense upfront R\&D and training costs. Competition is fierce, with multiple large players and well-funded startups vying for performance leadership and market adoption. Differentiation is key – based on model capabilities, specialization, safety features, or integration into broader platforms. Monetization strategies are still evolving (APIs, subscriptions, partnerships). While early leaders might command premium pricing, the potential for rapid capability catch-up or open-source alternatives could eventually lead to commoditization pressure on foundational model access, impacting long-term margins. Profitability will depend heavily on achieving unique value propositions or efficiencies in training and inference. For instance, Alphabet appears well-positioned due to its investments across the tech stack (TPUs, data, servers, distribution, integration). Models like Gemini benefit from this infrastructure, potentially offering competitive performance and cost-efficiency attributable, in part, to the use of custom TPUs compared to third-party chips used by some competitors.
     \item \textbf{Cloud Providers (CSPs - AWS, Azure, GCP)}: These players are major beneficiaries of the AI investment cycle, providing the essential infrastructure for training and inference. They capture significant revenue from compute, storage, and networking services tailored for AI workloads. However, competition among CSPs is intense, often leading to price wars for compute resources. While they benefit from economies of scale and can offer value-added AI platforms and services, their margins are also pressured by the massive ongoing capital expenditures required to build and maintain AI infrastructure and the need to remain price-competitive. The development of proprietary chips (like TPUs or AWS Trainium/Inferentia) represents an attempt to differentiate and potentially improve margins by controlling more of the stack. Furthermore, the cloud infrastructure industry often exhibits high switching costs for established workloads, fostering customer stickiness. This dynamic might lead to further market share concentration among the top providers (AWS, GCP, Azure). A pivotal strategy for sustaining or improving margins will likely involve adding higher-level services and abstractions (e.g., managed AI platforms, integrated development frameworks like AWS Amplify or Firebase, managed databases, CDNs) on top of bare-metal compute, attracting and retaining customers through value-added offerings rather than just infrastructure pricing.
     \item \textbf{Chip Designers (e.g., NVIDIA, AMD)}: Currently, dominant players like NVIDIA enjoy exceptional pricing power and operating margins, driven by the overwhelming demand for high-performance GPUs essential for training state-of-the-art AI models. Their technological lead creates significant barriers to entry for training accelerators. However, this position faces long-term challenges:
-        \begin{itemize}
-            \item Growing competition from rivals like AMD and potentially other entrants.
-            \item The trend of CSPs and large tech companies developing their own custom silicon (ASICs), particularly optimized for inference workloads, which could erode the market share for third-party chips over time, especially if "good enough" performance is achieved at lower cost.
-            \item Potential shifts in software and model architectures that might reduce reliance on current hardware paradigms.
-        \end{itemize}
-        Therefore, while near-term margins might remain elevated, DCF valuations must critically assess the long-term sustainability of current profitability levels and potentially moderate growth rate assumptions compared to recent history, considering the likelihood and impact of increased competition and technological shifts. This assessment directly influences the inputs used to derive intrinsic value estimates.
+          \begin{itemize}
+              \item Growing competition from rivals like AMD and potentially other entrants.
+              \item The trend of CSPs and large tech companies developing their own custom silicon (ASICs), particularly optimized for inference workloads, which could erode the market share for third-party chips over time, especially if "good enough" performance is achieved at lower cost.
+              \item Potential shifts in software and model architectures that might reduce reliance on current hardware paradigms.
+          \end{itemize}
+          Therefore, while near-term margins might remain elevated, DCF valuations must critically assess the long-term sustainability of current profitability levels and potentially moderate growth rate assumptions compared to recent history, considering the likelihood and impact of increased competition and technological shifts. This assessment directly influences the inputs used to derive intrinsic value estimates.
 \end{enumerate}
 
 In conclusion, when forecasting operating margins for companies in the AI ecosystem, analysts must move beyond simple extrapolation and deeply consider the evolving competitive forces, potential shifts in pricing power, the impact of massive capital investments, and the technological race across different layers of the value chain. Margin assumptions in the DCF model should reflect a reasoned view on how these dynamics will play out over the forecast period and into the terminal state.
@@ -262,13 +262,13 @@ The 2022 invasion shattered prevailing European security assumptions, leading to
     \item \textbf{National Budget Increases}: Numerous European nations, particularly those geographically closer to Russia and major powers like Germany, France, and the UK, announced substantial, multi-year increases in their regular defense budgets. Many countries committed to meeting or exceeding the NATO guideline of spending 2\% of GDP on defense, a target often neglected previously. Poland, for instance, aimed for spending approaching 5\% of GDP.
     \item \textbf{Special Funding Mechanisms}: Germany's landmark €100 billion "Zeitenwende" special fund, financed off-budget, was established to rapidly address critical equipment shortfalls in the Bundeswehr. Other nations like Denmark and Poland also created supplementary funding mechanisms.
     \item \textbf{EU-Level Initiatives}: The European Union launched several strategic initiatives and funding instruments to coordinate efforts and bolster the European Defense Technological and Industrial Base (EDTIB). Key examples include:
-        \begin{itemize}
-            \item The European Defense Industrial Strategy (EDIS) setting targets for joint and intra-EU procurement.
-            \item Short-term instruments like ASAP (focused on ammunition production) and EDIRPA (incentivizing joint procurement).
-            \item Ongoing funding via the European Defense Fund (EDF) for collaborative R\&D.
-            \item Proposals for longer-term structures like the European Defense Industry Programme (EDIP) and major financing mechanisms like the €150 billion SAFE loan facility, often incorporating strong "Buy European" preferences.
-            \item The ambitious "ReArm Europe / Readiness 2030" plan aiming to mobilize up to €800 billion in additional investment, facilitated partly by temporary fiscal flexibility under the Stability and Growth Pact.
-        \end{itemize}
+          \begin{itemize}
+              \item The European Defense Industrial Strategy (EDIS) setting targets for joint and intra-EU procurement.
+              \item Short-term instruments like ASAP (focused on ammunition production) and EDIRPA (incentivizing joint procurement).
+              \item Ongoing funding via the European Defense Fund (EDF) for collaborative R\&D.
+              \item Proposals for longer-term structures like the European Defense Industry Programme (EDIP) and major financing mechanisms like the €150 billion SAFE loan facility, often incorporating strong "Buy European" preferences.
+              \item The ambitious "ReArm Europe / Readiness 2030" plan aiming to mobilize up to €800 billion in additional investment, facilitated partly by temporary fiscal flexibility under the Stability and Growth Pact.
+          \end{itemize}
 \end{itemize}
 This confluence of national and EU-level actions represented a significant, policy-driven surge in planned Government Spending (\(G\)) directed specifically towards the defense sector.
 
@@ -287,31 +287,31 @@ For an analyst valuing a European defense company during this period, integratin
 
 \begin{itemize}
     \item \textbf{Revenue Forecasts (TAM \& Market Share - Section \ref{sec:revenue_forecast})}:
-        \begin{itemize}
-            \item \textit{TAM Expansion}: The overall TAM for European defense contractors expanded significantly due to increased national budgets and EU initiatives. Growth projections for the relevant market segments (land systems, aerospace, naval, electronics, ammunition) needed substantial upward revision, particularly for the medium term (e.g., the next 5-10 years).
-            \item \textit{Market Share}: Assessing market share required analyzing the company's specific positioning. Was it a prime contractor on key national or EU programs? Did it benefit from "Buy European" preferences within initiatives like SAFE or EDIP (if adopted)? Was it exposed to high-priority capability areas (e.g., ammunition, air defense)? Companies well-aligned with these spending priorities could expect to capture a larger share of the expanded TAM.
-            \item \textit{Short vs. Long Term}: Differentiate between the immediate boost from special funds/emergency measures and the more uncertain long-term trajectory dependent on regular budget increases and the success of proposed EU funding mechanisms. Long-term growth assumptions needed careful justification regarding spending sustainability.
-        \end{itemize}
+          \begin{itemize}
+              \item \textit{TAM Expansion}: The overall TAM for European defense contractors expanded significantly due to increased national budgets and EU initiatives. Growth projections for the relevant market segments (land systems, aerospace, naval, electronics, ammunition) needed substantial upward revision, particularly for the medium term (e.g., the next 5-10 years).
+              \item \textit{Market Share}: Assessing market share required analyzing the company's specific positioning. Was it a prime contractor on key national or EU programs? Did it benefit from "Buy European" preferences within initiatives like SAFE or EDIP (if adopted)? Was it exposed to high-priority capability areas (e.g., ammunition, air defense)? Companies well-aligned with these spending priorities could expect to capture a larger share of the expanded TAM.
+              \item \textit{Short vs. Long Term}: Differentiate between the immediate boost from special funds/emergency measures and the more uncertain long-term trajectory dependent on regular budget increases and the success of proposed EU funding mechanisms. Long-term growth assumptions needed careful justification regarding spending sustainability.
+          \end{itemize}
 
     \item \textbf{Operating Margins (Section \ref{sec:ebit_margin_forecast})}:
-        \begin{itemize}
-            \item \textit{Potential Upside}: Strong demand and long backlogs could provide pricing power and allow for benefits from increased production scale (operating leverage).
-            \item \textit{Potential Headwinds}: Margin forecasts also needed to consider potential pressures from rising input costs due to supply chain bottlenecks, increased labor costs, potentially significant R\&D spending required for next-generation systems, and possible government pressure on profitability for large, long-term contracts aimed at capability build-up. The net effect on margins would depend on the specific company's efficiency and negotiating power.
-        \end{itemize}
+          \begin{itemize}
+              \item \textit{Potential Upside}: Strong demand and long backlogs could provide pricing power and allow for benefits from increased production scale (operating leverage).
+              \item \textit{Potential Headwinds}: Margin forecasts also needed to consider potential pressures from rising input costs due to supply chain bottlenecks, increased labor costs, potentially significant R\&D spending required for next-generation systems, and possible government pressure on profitability for large, long-term contracts aimed at capability build-up. The net effect on margins would depend on the specific company's efficiency and negotiating power.
+          \end{itemize}
 
     \item \textbf{Reinvestment Needs (CapEx \& R\&D - Section \ref{sec:reinvestment_estimation})}:
-        \begin{itemize}
-            \item \textit{Increased CapEx}: Meeting the demand surge required significant investment in expanding production facilities and acquiring new machinery. Forecasts needed to reflect substantially higher levels of capital expenditure compared to pre-2022 levels, impacting FCFF negatively in the near term but enabling higher future revenues.
-            \item \textit{Elevated Research and Development}: Maintaining competitiveness and aligning with future capability requirements (e.g., FCAS, MGCS, AI integration) demanded sustained or increased R\&D investment, treated either as an operating expense impacting margins or capitalized as per Section \ref{par:defining_total_capital}.
-            \item \textit{Sales-to-Capital Ratio}: The surge in investment might temporarily lower the Sales-to-Capital ratio (Section \ref{par:sales_to_capital_ratio}) as capital is deployed ahead of the full revenue ramp-up.
-        \end{itemize}
+          \begin{itemize}
+              \item \textit{Increased CapEx}: Meeting the demand surge required significant investment in expanding production facilities and acquiring new machinery. Forecasts needed to reflect substantially higher levels of capital expenditure compared to pre-2022 levels, impacting FCFF negatively in the near term but enabling higher future revenues.
+              \item \textit{Elevated Research and Development}: Maintaining competitiveness and aligning with future capability requirements (e.g., FCAS, MGCS, AI integration) demanded sustained or increased R\&D investment, treated either as an operating expense impacting margins or capitalized as per Section \ref{par:defining_total_capital}.
+              \item \textit{Sales-to-Capital Ratio}: The surge in investment might temporarily lower the Sales-to-Capital ratio (Section \ref{par:sales_to_capital_ratio}) as capital is deployed ahead of the full revenue ramp-up.
+          \end{itemize}
 
     \item \textbf{Risk Assessment (WACC - Chapter \ref{chap:discount_rate})}:
-        \begin{itemize}
-            \item \textit{Systematic Risk (Beta)}: While benefiting from increased spending, the sector's cyclicality remained, now tied more closely to geopolitical events and long-term government funding sustainability. Beta assumptions needed evaluation in this context.
-            \item \textit{Cost of Debt (\(C_D\))}: Generally favorable financial performance might keep company-specific default spreads low for major players, but broader market rate changes would still impact \(C_D\).
-            \item \textit{Forecast Risk}: Significant uncertainty surrounded the long-term sustainability of elevated spending, the execution success of joint EU programs, and the impact of transatlantic tensions ("Buy European" vs. US dependencies). This higher forecast uncertainty might warrant consideration in sensitivity analyses or potentially through adjustments to the discount rate or required returns, although typically handled via careful base-case forecasting and scenario analysis.
-        \end{itemize}
+          \begin{itemize}
+              \item \textit{Systematic Risk (Beta)}: While benefiting from increased spending, the sector's cyclicality remained, now tied more closely to geopolitical events and long-term government funding sustainability. Beta assumptions needed evaluation in this context.
+              \item \textit{Cost of Debt (\(C_D\))}: Generally favorable financial performance might keep company-specific default spreads low for major players, but broader market rate changes would still impact \(C_D\).
+              \item \textit{Forecast Risk}: Significant uncertainty surrounded the long-term sustainability of elevated spending, the execution success of joint EU programs, and the impact of transatlantic tensions ("Buy European" vs. US dependencies). This higher forecast uncertainty might warrant consideration in sensitivity analyses or potentially through adjustments to the discount rate or required returns, although typically handled via careful base-case forecasting and scenario analysis.
+          \end{itemize}
 \end{itemize}
 
 \paragraph{Considerations on "Buy European" Initiatives and Transatlantic Dynamics} \label{par:defense_buy_european}
