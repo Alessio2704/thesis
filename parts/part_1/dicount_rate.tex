@@ -18,13 +18,15 @@ where:
 \end{itemize}
 
 The weights are based on the market values of each component relative to the firm's total market value of capital:
-\[\text{Total Market Value of Capital} = MV_{\text{Equity}} + MV_{\text{Debt}} + MV_{\text{Preferred Stock}}\]
-Thus:
-\begin{itemize}
-    \item \(W_E = \frac{MV_{\text{Equity}}}{\text{Total Market Value of Capital}}\)
-    \item \(W_D = \frac{MV_{\text{Debt}}}{\text{Total Market Value of Capital}}\)
-    \item \(W_P = \frac{MV_{\text{Preferred Stock}}}{\text{Total Market Value of Capital}}\)
-\end{itemize}
+\begin{align*}
+    \text{Total Market Value of Capital} & = MV_{\text{Equity}} + MV_{\text{Debt}} + MV_{\text{Preferred Stock}}
+\end{align*}
+Thus, the respective weights are calculated as:
+\begin{align*}
+    W_E & = \frac{MV_{\text{Equity}}}{\text{Total Market Value of Capital}}          \\[6pt]
+    W_D & = \frac{MV_{\text{Debt}}}{\text{Total Market Value of Capital}}            \\[6pt]
+    W_P & = \frac{MV_{\text{Preferred Stock}}}{\text{Total Market Value of Capital}}
+\end{align*}
 
 \paragraph{Estimating Market Values}
 \begin{itemize}
@@ -46,7 +48,7 @@ Thus:
 \end{itemize}
 
 
-\section{Cost of Equity} \label{sec:cost_of_equity}
+\section{Cost of Equity (\(C_E\))} \label{sec:cost_of_equity}
 The Cost of Equity (\(C_E\)) represents the rate of return required by the company's equity investors to compensate them for the systematic risk of holding the stock. A standard and widely used model for estimating \(C_E\) is the Capital Asset Pricing Model (CAPM), from the work of authors \textcite{sharpe1964beta} and \textcite{lintner1965beta}:
 \begin{equation} \label{eq:cost_of_equity}
     C_E = R_F + \beta_L \times ERP
@@ -59,7 +61,7 @@ where:
 \end{itemize}
 Each component (\(R_F\), \(\beta_L\), \(ERP\)) of the CAPM will be detailed in the subsequent sections.
 
-\subsection{Risk Free Rate} \label{sec:risk_free_rate}
+\subsection{Risk Free Rate (\(R_F\))} \label{sec:risk_free_rate}
 The Risk-Free Rate (\(R_F\)) represents the theoretical rate of return on an investment assumed to have zero credit risk. In practice, it is typically proxied by the yield on long-term government bonds issued by a sovereign entity considered highly unlikely to default (e.g., AAA-rated), denominated in the currency of the cash flows being discounted. This rate serves as the baseline return against which the risk premiums for all other investments in that currency are measured.
 
 The selection of the appropriate government bond yield requires careful consideration, especially when dealing with currencies issued by governments that carry non-negligible default risk \parencite{damodaran2025investment}.
@@ -69,93 +71,106 @@ For valuations in major currencies like USD or EUR, the yields on long-term US T
 
 \paragraph{Adjusting for Sovereign Default Risk} \label{sec:adjust_debt_default_risk}
 When the government issuing bonds in the currency of analysis carries default risk (i.e., is not AAA-rated or equivalent), its nominal bond yield (\(Y_{Govt}\)) implicitly includes a Country Default Spread (CDS) on top of the "true" risk-free rate for that currency:
-\[ Y_{Govt} = R_F + \text{Country Default Spread} \]
+\begin{align*}
+    Y_{Govt} & = R_F + \text{Country Default Spread}
+\end{align*}
 To isolate the \(R_F\) for use in the CAPM (where country risk is often captured separately in the ERP or Beta), this spread must be estimated and subtracted:
-\[ R_F = Y_{Govt} - \text{Country Default Spread} \]
+\begin{align*}
+    R_F & = Y_{Govt} - \text{Country Default Spread}
+\end{align*}
 Several approaches can be used to estimate the Country Default Spread or the adjusted \(R_F\):
 
-\subsubsection{Using Sovereign Credit Default Swap (CDS) Spreads} \label{sec:cds_spreads}
-Credit Default Swaps (CDS) on sovereign debt provide a direct market assessment of default risk. The CDS spread (quoted in basis points, where 100 bps = 1\%) represents the annual cost to insure against the government's default.
+\begin{enumerate}
+    \item \textbf{Using Sovereign Credit Default Swap (CDS) Spreads} \label{sec:cds_spreads}:\\
+          Credit Default Swaps (CDS) on sovereign debt provide a direct market assessment of default risk. The CDS spread (quoted in basis points, where 100 bps = 1\%) represents the annual cost to insure against the government's default.
 
-However, even highly-rated sovereigns often have non-zero CDS spreads due to market factors. Therefore, the relevant Country Default Spread is typically calculated as the sovereign's CDS spread minus the CDS spread of a benchmark AAA-rated sovereign (like Germany or the US):
-\[ \text{Country Default Spread (bps)} \approx \text{Country CDS Spread} - \text{Benchmark AAA CDS Spread} \]
-The adjusted risk-free rate is then:
-\[ R_F = Y_{Govt} - \frac{(\text{Country CDS Spread} - \text{Benchmark AAA CDS Spread})}{100} \]
+          However, even highly-rated sovereigns often have non-zero CDS spreads due to market factors. Therefore, the relevant Country Default Spread is typically calculated as the sovereign's CDS spread minus the CDS spread of a benchmark AAA-rated sovereign (like Germany or the US):
+          \begin{align*}
+              \text{Country Spread (bps)} & \approx \text{Country CDS} - \text{Benchmark AAA CDS}
+          \end{align*}
+          The adjusted risk-free rate is then calculated by converting the basis points to a decimal:
+          \begin{align*}
+              R_F & = Y_{Govt} - \left( \frac{\text{Country CDS} - \text{Benchmark AAA CDS}}{10000} \right)
+          \end{align*}
 
-\begin{table}[H]
-    \centering
-    \caption{Illustrative Sovereign CDS Spreads (Basis Points)}
-    \label{tab:cds_country_prices_example}
-    \vspace{5mm}
-    \begin{tabular}{|l|c|}
-        \hline
-        \textbf{Country} & \textbf{10Y CDS Spread (bps)} \\ \hline
-        Germany          & 24                            \\ \hline
-        USA              & 39                            \\ \hline
-        Japan            & 31                            \\ \hline
-        Italy            & 106                           \\ \hline
-        Russia           & N/A (Market Disrupted)        \\ \hline
-        China            & 71                            \\ \hline
-        India            & 93                            \\ \hline
-    \end{tabular}
+          \begin{table}[H]
+              \centering
+              \caption{Illustrative Sovereign CDS Spreads (Basis Points)}
+              \label{tab:cds_country_prices_example}
+              \vspace{2mm}
+              \begin{tabular}{|l|c|}
+                  \hline
+                  \textbf{Country} & \textbf{10Y CDS Spread (bps)} \\ \hline
+                  Germany          & 24                            \\ \hline
+                  USA              & 39                            \\ \hline
+                  Japan            & 31                            \\ \hline
+                  Italy            & 106                           \\ \hline
+                  Russia           & N/A (Market Disrupted)        \\ \hline
+                  China            & 71                            \\ \hline
+                  India            & 93                            \\ \hline
+              \end{tabular}
 
-    \vspace{5mm}
-    \raggedright \footnotesize
-    \textit{Note:} Data reflects illustrative 10-year sovereign Credit Default Swap spreads as of March 2025. Spreads are highly dynamic and fluctuate based on macroeconomic conditions and perceived sovereign risk.
+              \vspace{2mm}
+              \raggedright \footnotesize
+              \textit{Note:} Data reflects illustrative 10-year sovereign Credit Default Swap spreads as of March 2025. Spreads are highly dynamic and fluctuate based on macroeconomic conditions and perceived sovereign risk.\\
+              \textit{Source:} Data retrieved from market aggregators.
+          \end{table}
 
-    \textit{Source:} Data retrieved from market aggregators.
-\end{table}
+    \item \textbf{Using Sovereign Ratings}:\\
+          If reliable CDS data is unavailable, the Country Default Spread can be estimated based on the sovereign's credit rating assigned by major agencies (S\&P, Moody's, Fitch). Each rating category typically corresponds to an average historical or market-implied default spread.
+          \begin{align*}
+              R_F & = Y_{Govt} - \text{Default Spread for Rating}
+          \end{align*}
 
-\subsubsection{Using Sovereign Ratings}
-If reliable CDS data is unavailable, the Country Default Spread can be estimated based on the sovereign's credit rating assigned by major agencies (S\&P, Moody's, Fitch). Each rating category typically corresponds to an average historical or market-implied default spread.
-\[ R_F = Y_{Govt} - \text{Default Spread for Rating} \]
+          \begin{table}[H]
+              \centering
+              \caption{Illustrative Default Spreads by Rating Category}
+              \label{tab:rating_default_spreads_example}
+              \vspace{2mm}
+              \begin{tabular}{|l|c|}
+                  \hline
+                  \textbf{Rating} & \textbf{Illustrative Default Spread} \\ \hline
+                  AAA             & 0.45\%                               \\ \hline
+                  AA              & 0.60\%                               \\ \hline
+                  A+              & 0.77\%                               \\ \hline
+                  A               & 0.85\%                               \\ \hline
+                  A-              & 0.95\%                               \\ \hline
+                  BBB             & 1.20\%                               \\ \hline
+                  BB+             & 1.55\%                               \\ \hline
+                  BB              & 1.83\%                               \\ \hline
+                  B+              & 2.61\%                               \\ \hline
+                  B               & 3.00\%                               \\ \hline
+                  B-              & 4.42\%                               \\ \hline
+                  CCC             & 7.28\%                               \\ \hline
+                  CC              & 10.10\%                              \\ \hline
+                  C               & 15.50\%                              \\ \hline
+                  D               & 19.00\%                              \\ \hline
+              \end{tabular}
 
-\begin{table}[H]
-    \centering
-    \caption{Illustrative Default Spreads by Rating Category}
-    \label{tab:rating_default_spreads_example}
-    \vspace{5mm}
-    \begin{tabular}{|l|c|}
-        \hline
-        \textbf{Rating} & \textbf{Illustrative Default Spread} \\ \hline
-        AAA             & 0.45\%                               \\ \hline
-        AA              & 0.60\%                               \\ \hline
-        A+              & 0.77\%                               \\ \hline
-        A               & 0.85\%                               \\ \hline
-        A-              & 0.95\%                               \\ \hline
-        BBB             & 1.20\%                               \\ \hline
-        BB+             & 1.55\%                               \\ \hline
-        BB              & 1.83\%                               \\ \hline
-        B+              & 2.61\%                               \\ \hline
-        B               & 3.00\%                               \\ \hline
-        B-              & 4.42\%                               \\ \hline
-        CCC             & 7.28\%                               \\ \hline
-        CC              & 10.10\%                              \\ \hline
-        C               & 15.50\%                              \\ \hline
-        D               & 19.00\%                              \\ \hline
-    \end{tabular}
+              \vspace{2mm}
+              \raggedright \footnotesize
+              \textit{Note:} Spreads fluctuate with market conditions. Data as of March 2025.\\
+              \textit{Source:} \textcite{damodaran_data_2025}.
+          \end{table}
 
-    \vspace{5mm}
-    \raggedright \footnotesize
-    \textit{Note:} Spreads fluctuate with market conditions. Data as of March 2025.
-
-    \textit{Source:} \textcite{damodaran_data_2025}.
-\end{table}
-
-\subsubsection{Using Differentials on Foreign Currency Bonds}
-If the government issues bonds denominated in a major, low-risk currency (like USD or EUR), the spread on these bonds relative to benchmark bonds (e.g., US Treasuries or German Bunds) can serve as a proxy for the Country Default Spread.
-\begin{align*}
-    \text{Country Default Spread} & \approx \text{Yield on Govt's FX Bond} - \text{Yield on Benchmark FX Bond} \\
-    R_F                           & = Y_{Govt} - \text{Country Default Spread}
-\end{align*}
-This method assumes the spread is primarily due to default risk, though other factors might influence it.
+    \item \textbf{Using Differentials on Foreign Currency Bonds}:\\
+          If the government issues bonds denominated in a major, low-risk currency (like USD or EUR), the spread on these bonds relative to benchmark bonds (e.g., US Treasuries or German Bunds) can serve as a proxy for the Country Default Spread.
+          \begin{align*}
+              \text{Country Default Spread} & \approx \text{Yield on Govt's FX Bond} - \text{Yield on Benchmark FX Bond} \\[6pt]
+              R_F                           & = Y_{Govt} - \text{Country Default Spread}
+          \end{align*}
+          This method assumes the spread is primarily due to default risk, though other factors might influence it.
+\end{enumerate}
 
 \paragraph{Handling Currencies with No Reliable Government Bond Market}
 In rare cases where a currency lacks a liquid government bond market, estimating \(R_F\) becomes more challenging. One approach builds upon a reliable base currency \(R_F\) (e.g., USD \(R_{F, Base}\)) and adjusts for expected inflation differentials (based on relative Purchasing Power Parity):
-\[ R_F \approx (1 + R_{F, Base}) \times \frac{(1 + E[\text{Inflation}_{\text{Local}}])}{(1 + E[\text{Inflation}_{\text{Base}}])} - 1 \]
+\begin{align*}
+    R_F & \approx (1 + R_{F, Base}) \times \frac{(1 + E[\text{Inflation}_{\text{Local}}])}{(1 + E[\text{Inflation}_{\text{Base}}])} - 1
+\end{align*}
 where \(E[\text{Inflation}]\) denotes the expected long-term inflation rate for the respective currency. This method relies heavily on accurate long-term inflation forecasts.
 
-\subsection{Levered Beta} \label{sec:beta}
+
+\subsection{Levered Beta (\(\beta_L\))} \label{sec:beta}
 The Levered Beta (\(\beta_L\)) in the CAPM equation (\ref{eq:cost_of_equity}) serves as a measure of a company's systematic risk relative to the overall market. It quantifies how sensitive the company's stock returns are expected to be in response to broader market movements. A \(\beta_L\) greater than 1 suggests higher volatility than the market, while a \(\beta_L\) less than 1 indicates lower volatility.
 
 A common method for estimating beta involves a historical regression analysis, comparing the past stock returns of the company against the returns of a broad market index (e.g., S\&P 500, MSCI World). The slope coefficient of this regression line is taken as the historical beta. While widely used, this "regression beta" approach has limitations: it relies heavily on historical data (which may not reflect future risk), can be sensitive to the chosen time period and index, and often has significant statistical noise (high standard errors) \parencite{damodaran_risk_parameters}.
@@ -207,9 +222,13 @@ This step isolates the systematic risk associated purely with the operations wit
     \item \textit{Obtain Regression Betas for Peers}: Find the levered regression betas (\(\beta_{L, \text{Peer}}\)) for each comparable company, typically regressed against a broad market index.
     \item \textit{Gather Financial Data for Peers}: For each peer firm, obtain its market value Debt-to-Equity ratio (\(D/E_{\text{Peer}}\)) and marginal tax rate (\(T_{\text{Peer}}\)).
     \item \textit{Delever Peer Betas}: Convert each peer company's levered beta (\(\beta_{L, \text{Peer}}\)) to an unlevered beta (\(\beta_{U, \text{Peer}}\)) using the following standard formula, which removes the effect of financial leverage:
-          \[ \beta_{U, \text{Peer}} = \frac{\beta_{L, \text{Peer}}}{(1 + (1 - T_{\text{Peer}}) \times (D/E_{\text{Peer}}))} \]
+          \begin{align*}
+              \beta_{U, \text{Peer}} & = \frac{\beta_{L, \text{Peer}}}{(1 + (1 - T_{\text{Peer}}) \times (D/E_{\text{Peer}}))}
+          \end{align*}
     \item \textit{Calculate Average Segment Unlevered Beta}: Compute the average (or sometimes the median, to reduce outlier impact) of the unlevered betas (\(\beta_{U, \text{Peer}}\)) calculated for all peers within that segment. This average represents the estimated unlevered beta for that specific business segment (\(\beta_{U, \text{Segment}}\)).
-          \[ \beta_{U, \text{Segment}} = \text{Average}(\beta_{U, \text{Peer } 1}, \beta_{U, \text{Peer } 2}, ..., \beta_{U, \text{Peer } m}) \]
+          \begin{align*}
+              \beta_{U, \text{Segment}} & = \text{Average}(\beta_{U, \text{Peer } 1}, \beta_{U, \text{Peer } 2}, ..., \beta_{U, \text{Peer } m})
+          \end{align*}
           where \(m\) is the number of comparable companies in the segment sample.
 \end{enumerate}
 Repeat this process for each distinct business segment the company operates in.
@@ -225,9 +244,13 @@ Careful screening based on revenue breakdown, business descriptions, and industr
 This step aggregates the segment risks based on their contribution to the overall company.
 \begin{enumerate}
     \item \textit{Determine Segment Weights}: Estimate the proportion of the company's overall value or activity attributable to each business segment. Common weighting schemes use segment revenues or estimated segment market values (\(W_{\text{Segment}}\)).
-          \[ W_{\text{Segment } i} = \frac{\text{Revenue (or Value) of Segment } i}{\text{Total Company Revenue (or Value)}} \]
+          \begin{align*}
+              W_{\text{Segment } i} & = \frac{\text{Revenue (or Value) of Segment } i}{\text{Total Company Revenue (or Value)}}
+          \end{align*}
     \item \textit{Calculate Weighted Average}: Compute the company's overall unlevered beta (\(\beta_{U, \text{Company}}\)) as the weighted average of the unlevered betas of its constituent segments (\(\beta_{U, \text{Segment } i}\)):
-          \[ \beta_{U, \text{Company}} = \sum_{i=1}^{k} (W_{\text{Segment } i} \times \beta_{U, \text{Segment } i}) \]
+          \begin{align*}
+              \beta_{U, \text{Company}} & = \sum_{i=1}^{k} (W_{\text{Segment } i} \times \beta_{U, \text{Segment } i})
+          \end{align*}
           where \(k\) is the number of business segments.
 \end{enumerate}
 This \(\beta_{U, \text{Company}}\) represents the systematic risk of the company's combined operating assets, independent of its financing decisions.
@@ -237,7 +260,9 @@ This final step incorporates the risk impact of the company's specific capital s
 \begin{enumerate}
     \item \textit{Determine Company's Leverage and Tax Rate}: Obtain the company's current or target market value Debt-to-Equity ratio (\(D/E_{\text{Company}}\)) and its effective marginal tax rate (\(T_{\text{Company}}\)). The D/E ratio should ideally reflect the leverage level expected to be maintained going forward.
     \item \textit{Relever the Company Beta}: Apply the company's specific leverage and tax rate to its overall unlevered beta (\(\beta_{U, \text{Company}}\)) to calculate the company's levered beta (\(\beta_{L, \text{Company}}\)):
-          \[ \beta_{L, \text{Company}} = \beta_{U, \text{Company}} \times (1 + (1 - T_{\text{Company}}) \times (D/E_{\text{Company}})) \]
+          \begin{align*}
+              \beta_{L, \text{Company}} & = \beta_{U, \text{Company}} \times (1 + (1 - T_{\text{Company}}) \times (D/E_{\text{Company}}))
+          \end{align*}
 \end{enumerate}
 
 This resulting \(\beta_{L, \text{Company}}\) is the estimated levered beta reflecting both the company's business mix and financial leverage, and it is the appropriate beta input for the CAPM equation (\ref{eq:cost_of_equity}). This bottom-up approach generally yields more stable and fundamentally grounded beta estimates compared to direct regression methods.
@@ -276,20 +301,26 @@ Selecting the appropriate ERP estimation method requires considering the strengt
 The Implied ERP approach is favored here because it is inherently forward-looking and grounded in current market prices and expectations. It directly calculates the expected return embedded in the current market level, given consensus forecasts for future earnings or dividends and the current risk-free rate.
 
 The calculation methodology typically involves a two-stage Dividend Discount Model (DDM) or Free Cash Flow to Equity (FCFE) model applied to a broad market index (e.g., the S\&P 500):
-\[ \text{Current Index Level} = \sum_{t=1}^{N} \frac{E[\text{Cash Flow}_t]}{(1+k_e)^t} + \frac{TV_N}{(1+k_e)^N} \]
+\begin{align*}
+    \text{Current Index Level} & = \sum_{t=1}^{N} \frac{E[\text{Cash Flow}_t]}{(1+k_e)^t} + \frac{TV_N}{(1+k_e)^N}
+\end{align*}
 where:
 \begin{itemize}
     \item \(E[\text{Cash Flow}_t]\) is the expected aggregate cash flow (dividends + buybacks, or earnings adjusted for payout) for the index in year \(t\). These forecasts are typically sourced from analyst consensus estimates for the initial years (\(t=1\) to \(N\)).
     \item \(k_e\) is the implied cost of equity for the market index. This is the rate we solve for.
     \item \(N\) is the number of years in the explicit forecast period.
     \item \(TV_N\) is the terminal value of the index at the end of year \(N\), calculated assuming a stable perpetual growth rate (\(g\)) beyond that point:
-          \[ TV_N = \frac{E[\text{Cash Flow}_{N+1}]}{k_e - g} = \frac{E[\text{Cash Flow}_N](1+g)}{k_e - g} \]
+          \begin{align*}
+              TV_N & = \frac{E[\text{Cash Flow}_{N+1}]}{k_e - g} = \frac{E[\text{Cash Flow}_N](1+g)}{k_e - g}
+          \end{align*}
     \item The perpetual growth rate (\(g\)) is typically assumed to be close to the long-term expected nominal GDP growth rate or, often, proxied by the current long-term risk-free rate (\(R_F\)).
 \end{itemize}
 The process involves finding the discount rate \(k_e\) that makes the present value of the expected future cash flows (including the terminal value) equal to the current observed market index level. This is usually done through an iterative process or using a solver function.
 
 Once the implied cost of equity (\(k_e\)) is found, the Implied ERP is calculated by subtracting the current risk-free rate (\(R_F\)):
-\[ \text{Implied ERP} = k_e - R_F \]
+\begin{align*}
+    \text{Implied ERP} & = k_e - R_F
+\end{align*}
 While this method also relies on assumptions (particularly regarding future cash flow growth and the terminal growth rate, \(g\)), it has the significant advantage of reflecting current market conditions and expectations embedded in asset prices, making it a more dynamic measure than the historical premium.
 
 \paragraph{Transitioning to Company-Specific ERP}
@@ -301,7 +332,9 @@ The company-specific ERP is typically estimated by taking a base ERP for a matur
 \begin{enumerate}
     \item \textbf{Establish a Base ERP}: Start with the Implied ERP calculated for a mature, stable market, often the US (\(ERP_{\text{Base}}\)).
     \item \textbf{Estimate Country Risk Premiums (CRP)}: For each country or region where the company operates (and for which distinct risk characteristics exist), estimate a CRP. This premium reflects the additional risk perceived by equity investors for investing in that specific country compared to the base mature market. A common approach to estimating CRP is:
-          \[ CRP_{\text{Country}} = \text{Country Default Spread} \times \left( \frac{\sigma_{\text{Equity}}}{\sigma_{\text{Govt Bond}}} \right)_{\text{Country}} \]
+          \begin{align*}
+              CRP_{\text{Country}} & = \text{Country Default Spread} \times \left( \frac{\sigma_{\text{Equity}}}{\sigma_{\text{Govt Bond}}} \right)_{\text{Country}}
+          \end{align*}
           where:
           \begin{itemize}
               \item \textbf{Country Default Spread}: This is the same sovereign default spread discussed in Section \ref{sec:adjust_debt_default_risk} when adjusting the risk-free rate (estimated via CDS spreads or sovereign ratings). It reflects the risk of the government defaulting.
@@ -310,8 +343,10 @@ The company-specific ERP is typically estimated by taking a base ERP for a matur
           The total ERP for investing solely in that specific country would then be \(ERP_{\text{Country}} = ERP_{\text{Base}} + CRP_{\text{Country}}\).
     \item \textbf{Determine Geographic Weights}: Obtain the percentage of the company's total revenues derived from each country or geographic region (\(W_{\text{Country}}\)). This data is often found in the company's annual reports (e.g., geographic segment information).
     \item \textbf{Calculate Weighted Average ERP}: The company-specific ERP is the sum of the ERP for each region weighted by the proportion of revenues from that region:
-          \[ ERP_{\text{Company}} = \sum_{\text{All Regions}} \left( W_{\text{Region}} \times ERP_{\text{Region}} \right) \]
-          \[ ERP_{\text{Company}} = \sum_{\text{All Regions}} \left[ W_{\text{Region}} \times (ERP_{\text{Base}} + CRP_{\text{Region}}) \right] \]
+          \begin{align*}
+              ERP_{\text{Company}} & = \sum_{\text{All Regions}} \left( W_{\text{Region}} \times ERP_{\text{Region}} \right)                       \\[6pt]
+              ERP_{\text{Company}} & = \sum_{\text{All Regions}} \left[ W_{\text{Region}} \times (ERP_{\text{Base}} + CRP_{\text{Region}}) \right]
+          \end{align*}
           (Note: For the base region itself, CRP is typically zero).
 \end{enumerate}
 This approach ensures that the ERP used in the company's cost of equity calculation reflects not only the baseline market risk but also the specific additional risks stemming from its international operations.
@@ -319,10 +354,14 @@ This approach ensures that the ERP used in the company's cost of equity calculat
 \paragraph{Handling Geographically Aggregated Revenue Data} \label{par:geo_aggregation}
 In practice, companies rarely report revenues on a country-by-country basis for all their operations due to impracticality. Instead, financial statements often aggregate revenues into broader geographic regions (e.g., EMEA - Europe, Middle East, Africa; APAC - Asia-Pacific; Americas).
 When faced with such aggregated data, the process requires an additional step: calculating a representative ERP for each reported region before computing the final company-specific ERP. This regional ERP is typically estimated as a weighted average of the individual country ERPs within that region, using Gross Domestic Product (GDP) as the weighting factor:
-\[ ERP_{\text{Region}} = \sum_{\text{Countries } i \text{ in Region}} \left( \frac{GDP_i}{\sum_{j \text{ in Region}} GDP_j} \times ERP_{\text{Country } i} \right) \]
+\begin{align*}
+    ERP_{\text{Region}} & = \sum_{\text{Countries } i \text{ in Region}} \left( \frac{GDP_i}{\sum_{j \text{ in Region}} GDP_j} \times ERP_{\text{Country } i} \right)
+\end{align*}
 where \(ERP_{\text{Country } i} = ERP_{\text{Base}} + CRP_{\text{Country } i}\).
 Once the GDP-weighted ERP is calculated for each relevant region reported by the company, the final company-specific ERP is computed using the revenue weights for those regions, analogous to the country-level calculation:
-\[ ERP_{\text{Company}} = \sum_{\text{All Reported Regions}} \left( W_{\text{Region}} \times ERP_{\text{Region}} \right) \]
+\begin{align*}
+    ERP_{\text{Company}} & = \sum_{\text{All Reported Regions}} \left( W_{\text{Region}} \times ERP_{\text{Region}} \right)
+\end{align*}
 where \(W_{\text{Region}}\) is the proportion of the company's total revenues derived from that specific aggregated region. This ensures the final ERP appropriately reflects the risk profile of the geographic areas where the company actually generates its sales, even when detailed country data is unavailable.
 
 \paragraph{Special Case: Production vs. Revenue Location Risk} \label{par:production_location}
@@ -341,7 +380,9 @@ In these specific cases, the geographic distribution of the company's production
 The Cost of Debt (\(C_D\)) required for the WACC formula (\ref{eq:wacc}) represents the current market interest rate the company would face if it were to issue new, long-term debt today. This rate reflects the baseline yield for debt in the relevant currency plus a premium demanded by lenders to compensate for the company's specific default risk. It is not the historical interest expense recorded on the income statement \parencite{damodaran2025investment}.
 
 The pre-tax Cost of Debt can be expressed as:
-\[ C_D = R_F + \text{Company Default Spread} \]
+\begin{align*}
+    C_D & = R_F + \text{Company Default Spread}
+\end{align*}
 where:
 \begin{itemize}
     \item \(R_F\) is the appropriate Risk-Free Rate for the currency in which the debt is issued, matching the duration of the debt (typically long-term), as determined in Section \ref{sec:risk_free_rate}.
@@ -384,9 +425,9 @@ The ideal way to estimate the default spread is to find the Yield-to-Maturity (Y
         \(<\) 0.20                       & D                        & \(>\) 15.00\%                \\
         \hline
     \end{tabular}
-    
+
     \vspace{2mm}
-    \raggedright \footnotesize 
+    \raggedright \footnotesize
     \textit{Note:} Spreads are indicative and vary with market conditions and firm size. Required ratios may differ for smaller firms.\\
     \textit{Source:} \textcite{damodaran_data_2025}.
 \end{table}
@@ -414,10 +455,14 @@ Convertible bonds present a specific challenge as they combine features of both 
 
 \begin{enumerate}
     \item \textbf{Value the Straight Debt Component}: Estimate the value of the bond as if it were a standard, non-convertible ("straight") bond. This involves discounting the bond's promised coupon payments and principal repayment at the company's current pre-tax cost of straight debt (\(C_D\)), estimated based on its credit rating and market conditions (as discussed in Section \ref{sec:cost_of_debt}). Let this value be \(V_{\text{Straight Debt}}\).
-          \[ V_{\text{Straight Debt}} = \sum_{t=1}^{M} \frac{\text{Coupon}_t}{(1+C_D)^t} + \frac{\text{Face Value}}{(1+C_D)^M} \]
+          \begin{align*}
+              V_{\text{Straight Debt}} & = \sum_{t=1}^{M} \frac{\text{Coupon}_t}{(1+C_D)^t} + \frac{\text{Face Value}}{(1+C_D)^M}
+          \end{align*}
           where \(M\) is the maturity of the bond. This \(V_{\text{Straight Debt}}\) should be included in the calculation of the Market Value of Debt (\(MV_{\text{Debt}}\)).
     \item \textbf{Value the Conversion Option (Equity Component)}: The difference between the observed market price of the convertible bond (\(P_{\text{Convertible}}\)) and the estimated value of its straight debt component represents the market value of the embedded conversion option. This option value is essentially an equity claim.
-          \[ V_{\text{Conversion Option}} = P_{\text{Convertible}} - V_{\text{Straight Debt}} \]
+          \begin{align*}
+              V_{\text{Conversion Option}} & = P_{\text{Convertible}} - V_{\text{Straight Debt}}
+          \end{align*}
           Alternatively, the conversion option can be valued directly using option pricing models (like Black-Scholes), though this is more complex. The estimated \(V_{\text{Conversion Option}}\) should be added to the Market Value of Equity (\(MV_{\text{Equity}}\)) when calculating the WACC weights (\(W_E\) and \(W_D\)).
 \end{enumerate}
 
@@ -427,7 +472,9 @@ By splitting the convertible bond this way, the debt component correctly contrib
 Preferred stock is a hybrid security that shares characteristics of both debt and equity. Holders typically receive a fixed dividend payment periodically, similar to interest on debt, but these payments are usually not tax-deductible for the issuing company. Preferred stockholders generally have priority over common stockholders in receiving dividends and in liquidation, but their claims are subordinate to those of debt holders \parencite{brealey2020principles}.
 
 Because preferred stock typically pays a fixed dividend indefinitely (or for a very long term) and often has no maturity date, its cost (\(C_P\)) is usually estimated as the yield, similar to the valuation of a perpetuity:
-\[ C_P = \frac{D_{PS}}{P_{PS}} \]
+\begin{align*}
+    C_P & = \frac{D_{PS}}{P_{PS}}
+\end{align*}
 where:
 \begin{itemize}
     \item \(D_{PS}\) is the stated annual dividend per preferred share. This information can usually be found in the company's financial reports or prospectus for the specific preferred stock issue.

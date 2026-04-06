@@ -1,40 +1,61 @@
+\PassOptionsToPackage{a4paper, left=3cm, right=3cm, top=3cm, bottom=3cm}{geometry}
+
 \documentclass[12pt]{bookest}
-\usepackage{float}
+
+\usepackage{setspace}
+\setstretch{1.65} 
+
+\usepackage{mathptmx} 
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage[super]{nth}
 \usepackage{hyperref}
+\usepackage{float}
+
 \usepackage{parskip}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\setlength{\emergencystretch}{3em}
 
 \usepackage[backend=biber, style=authoryear, maxcitenames=2]{biblatex}
 \addbibresource{references.bib}
 
+\raggedbottom
+
 \title{
-{Company Valuation in a Complex Global Landscape: A Multidisciplinary Framework}\\[10pt]
-% {Università Politecnica delle Marche}\\[50pt]
-% \includegraphics{/university_logo.png}
+    \vspace{2cm}
+    \Huge \textbf{Company Valuation in a Complex Global Landscape} \\
+    \vspace{0.5cm}
+    \Large \textit{A Multidisciplinary Framework}
+    \vspace{2cm}
 }
 
-\author{Alessio Marcuzzi}
-% \date{20-09-2025}
+\author{\Large \textbf{Alessio Marcuzzi}}
+\date{\vfill \Large Academic Year 2025/2026}
 
-\setlength\parindent{0pt}
 \begin{document}
 
+\pagenumbering{roman}
 \maketitle
-\newpage
+\cleardoublepage
+
 \tableofcontents
-\newpage
+\cleardoublepage
+
+\pagenumbering{arabic}
+\setcounter{page}{7}
 
 \include{parts/introduction/introduction}
+
 \part{Building the model}
 \include{parts/part_1/building_the_model}
+
 \part{Model Response to Macroeconomic Shocks}
 \include{parts/part_2/model_response_to_macroeconomic_shocks}
 
 \newpage
+\setstretch{1.0}
 \printbibliography[heading=bibintoc, title={References}]
 
 \end{document}

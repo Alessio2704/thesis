@@ -7,7 +7,7 @@
 ---
 
 ## 📌 Executive Summary
-This repository contains the complete 170+ pages thesis and research framework for a comprehensive approach to company valuation. Moving beyond traditional Discounted Cash Flow (DCF) models, this work integrates **Macroeconomic Theory**, **Geopolitical Risk Analysis**, **Institutional Economics**, and **Technological Infrastructure** into a unified model.
+This repository contains the complete thesis and research framework for a comprehensive approach to company valuation. Moving beyond traditional Discounted Cash Flow (DCF) models, this work integrates **Macroeconomic Theory**, **Geopolitical Risk Analysis**, **Institutional Economics**, and **Technological Infrastructure** into a unified model.
 
 This research serves as the theoretical and mathematical foundation for [**ValuaScript**](https://github.com/Alessio2704/valuascript-toolchain), a proprietary Domain-Specific Language (DSL) and C++20 compiler designed for high-performance financial simulations.
 
