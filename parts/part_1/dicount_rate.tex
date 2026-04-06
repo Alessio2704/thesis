@@ -183,7 +183,9 @@ Conceptually, a company's beta should reflect the fundamental risks inherent in 
 \end{enumerate}
 
 \paragraph{Levered Beta (\(\beta_L\)) vs. Unlevered Beta (\(\beta_U\))}
+As shown by \textcite{hamada1972beta}, company specific leverage explains around 21\% to 24\% of observed systematic risk of common stocks (under the assumptions that Modigliani and Miller (MM) Theory holds).
 To properly analyze and compare risk across companies and isolate the impact of financial structure, it's crucial to distinguish between Levered Beta (\(\beta_L\)) and Unlevered Beta (\(\beta_U\)).
+
 \begin{itemize}
     \item \textbf{Unlevered Beta (\(\beta_U\))}: Also known as the "asset beta," this measures the inherent systematic risk of the company's core business operations, independent of its capital structure. It reflects the risk driven solely by the nature of the business (point 3 above) and its operating leverage (point 2, though sometimes operating leverage effects are also adjusted for separately). It represents the beta the company would have if it were entirely equity-financed (i.e., had no debt).
     \item \textbf{Levered Beta (\(\beta_L\))}: Also known as the "equity beta," this reflects the total systematic risk borne by the company's equity holders. It incorporates both the underlying business risk (\(\beta_U\)) and the additional risk introduced by the company's specific financial leverage (point 1 above). This is the beta used directly in the CAPM equation (\ref{eq:cost_of_equity}) to calculate the cost of equity (\(C_E\)).
@@ -233,7 +235,7 @@ This step isolates the systematic risk associated purely with the operations wit
 \end{enumerate}
 Repeat this process for each distinct business segment the company operates in.
 
-\paragraph{"Pure-Play Companies"}
+\paragraph{"Pure-Play Companies"} \label{par:pure_play_companies}
 The term "pure-play company" refers to a publicly traded firm that focuses predominantly or exclusively on one specific line of business or industry segment. In the context of bottom-up beta estimation (Step 1, point 2), identifying such companies as peers is highly desirable. Because their operations are concentrated, their observed regression betas (after delevering) are expected to more accurately reflect the inherent systematic risk of that particular business activity, unclouded by the risks associated with diversification into other segments.
 
 Finding true pure-play companies can sometimes be challenging, especially for niche or highly integrated industries. Many large corporations are diversified across multiple segments. Therefore, analysts must exercise judgment when selecting the peer group, often including companies that are primarily engaged in the relevant business, even if not 100\% pure-play.
